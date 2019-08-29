@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantinger.com/"/>
-  <updated>2019-08-29T06:59:47.238Z</updated>
+  <updated>2019-08-29T09:02:38.982Z</updated>
   <id>https://yantinger.com/</id>
   
   <author>
@@ -17,11 +17,257 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>vsftpd安装配置说明</title>
+    <link href="https://yantinger.com/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/"/>
+    <id>https://yantinger.com/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/</id>
+    <published>2019-08-29T09:01:45.000Z</published>
+    <updated>2019-08-29T09:02:38.982Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;vsftpd&lt;/code&gt;是在&lt;code&gt;linux&lt;/code&gt;环境下，使用最多的&lt;code&gt;FTP&lt;/code&gt;服务端软件。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vsftpd&lt;/code&gt;默认只能使用root用户运行。使用非&lt;code&gt;root&lt;/code&gt;用户运行，
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://yantinger.com/categories/Linux/"/>
+    
+    
+      <category term="ftp" scheme="https://yantinger.com/tags/ftp/"/>
+    
+      <category term="linux" scheme="https://yantinger.com/tags/linux/"/>
+    
+      <category term="vsftpd" scheme="https://yantinger.com/tags/vsftpd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UMI简介</title>
+    <link href="https://yantinger.com/2019/07/28/umi-jian-jie/"/>
+    <id>https://yantinger.com/2019/07/28/umi-jian-jie/</id>
+    <published>2019-07-28T09:03:59.000Z</published>
+    <updated>2019-08-29T09:05:02.686Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;UMI是什么&quot;&gt;&lt;a href=&quot;#UMI是什么&quot; class=&quot;headerlink&quot; title=&quot;UMI是什么&quot;&gt;&lt;/a&gt;UMI是什么&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;UMI&lt;/strong&gt;全称：&lt;em&gt;Unique Molecular
+        
+      
+    
+    </summary>
+    
+      <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
+    
+    
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
+    
+      <category term="UMI" scheme="https://yantinger.com/tags/UMI/"/>
+    
+      <category term="NGS" scheme="https://yantinger.com/tags/NGS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重复序列注释软件REPET</title>
+    <link href="https://yantinger.com/2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/"/>
+    <id>https://yantinger.com/2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/</id>
+    <published>2018-10-15T04:54:16.000Z</published>
+    <updated>2019-08-29T09:18:48.172Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;REPET是一个寻找基因组中的重复序列并进行注释和分析的软件。主要分为两个部分 
+        
+      
+    
+    </summary>
+    
+      <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
+    
+    
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
+    
+      <category term="REPET" scheme="https://yantinger.com/tags/REPET/"/>
+    
+      <category term="科研" scheme="https://yantinger.com/tags/%E7%A7%91%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重复序列类型</title>
+    <link href="https://yantinger.com/2018/09/29/chong-fu-xu-lie-lei-xing/"/>
+    <id>https://yantinger.com/2018/09/29/chong-fu-xu-lie-lei-xing/</id>
+    <published>2018-09-29T09:06:30.000Z</published>
+    <updated>2019-08-29T09:16:21.224Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;重复序列类型&quot;&gt;&lt;a href=&quot;#重复序列类型&quot; class=&quot;headerlink&quot; title=&quot;重复序列类型&quot;&gt;&lt;/a&gt;重复序列类型&lt;/h2&gt;&lt;p&gt;基因组中的重复序列依据其序列特征可以分为两类：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.tandem
+        
+      
+    
+    </summary>
+    
+      <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
+    
+    
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
+    
+      <category term="科研" scheme="https://yantinger.com/tags/%E7%A7%91%E7%A0%94/"/>
+    
+      <category term="重复序列" scheme="https://yantinger.com/tags/%E9%87%8D%E5%A4%8D%E5%BA%8F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow小尝试</title>
+    <link href="https://yantinger.com/2018/07/26/tensorflow-xiao-chang-shi/"/>
+    <id>https://yantinger.com/2018/07/26/tensorflow-xiao-chang-shi/</id>
+    <published>2018-07-26T12:18:56.000Z</published>
+    <updated>2019-08-29T09:01:05.922Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;win10 64位&lt;/li&gt;
+&lt;li&gt;GTX960m&lt;/li&gt;
+&lt;li&gt;Python 3.5.2 :: Anaconda
+        
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://yantinger.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="tensorflow" scheme="https://yantinger.com/tags/tensorflow/"/>
+    
+      <category term="机器学习" scheme="https://yantinger.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="win10" scheme="https://yantinger.com/tags/win10/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python提取GFF3文件信息</title>
+    <link href="https://yantinger.com/2018/04/12/python-ti-qu-gff3-wen-jian-xin-xi/"/>
+    <id>https://yantinger.com/2018/04/12/python-ti-qu-gff3-wen-jian-xin-xi/</id>
+    <published>2018-04-12T07:48:44.000Z</published>
+    <updated>2019-08-29T08:57:51.957Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;GFF3文件&quot;&gt;&lt;a href=&quot;#GFF3文件&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
+    
+    
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
+    
+      <category term="gff" scheme="https://yantinger.com/tags/gff/"/>
+    
+      <category term="gene" scheme="https://yantinger.com/tags/gene/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pyclone安装测试</title>
+    <link href="https://yantinger.com/2018/03/25/pyclone-an-zhuang-ce-shi/"/>
+    <id>https://yantinger.com/2018/03/25/pyclone-an-zhuang-ce-shi/</id>
+    <published>2018-03-25T08:52:17.000Z</published>
+    <updated>2019-08-29T08:54:30.810Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;PyClone is statistical model and software tool designed to infer the prevalence of point mutations in heterogeneous cancer samples. The
+        
+      
+    
+    </summary>
+    
+      <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
+    
+    
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
+    
+      <category term="tumor" scheme="https://yantinger.com/tags/tumor/"/>
+    
+      <category term="Pyclone" scheme="https://yantinger.com/tags/Pyclone/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PureCN测试</title>
+    <link href="https://yantinger.com/2018/02/23/purecn-ce-shi/"/>
+    <id>https://yantinger.com/2018/02/23/purecn-ce-shi/</id>
+    <published>2018-02-23T06:09:41.000Z</published>
+    <updated>2019-08-29T08:41:36.372Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;PureCN测试&quot;&gt;&lt;a href=&quot;#PureCN测试&quot; class=&quot;headerlink&quot; title=&quot;PureCN测试&quot;&gt;&lt;/a&gt;PureCN测试&lt;/h1&gt;&lt;h2 id=&quot;测试环境&quot;&gt;&lt;a href=&quot;#测试环境&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
+    
+    
+      <category term="R语言" scheme="https://yantinger.com/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
+    
+      <category term="tumor" scheme="https://yantinger.com/tags/tumor/"/>
+    
+  </entry>
+  
+  <entry>
     <title>argparse包使用</title>
     <link href="https://yantinger.com/2018/02/20/argparse-bao-shi-yong/"/>
     <id>https://yantinger.com/2018/02/20/argparse-bao-shi-yong/</id>
     <published>2018-02-20T12:19:50.000Z</published>
-    <updated>2019-08-29T06:59:47.238Z</updated>
+    <updated>2019-08-29T08:41:13.115Z</updated>
     
     <summary type="html">
     
@@ -35,7 +281,7 @@
     
     </summary>
     
-      <category term="program" scheme="https://yantinger.com/categories/program/"/>
+      <category term="编程" scheme="https://yantinger.com/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
       <category term="Python" scheme="https://yantinger.com/tags/Python/"/>

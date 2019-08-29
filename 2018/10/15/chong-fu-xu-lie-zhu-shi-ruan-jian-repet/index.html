@@ -1,0 +1,1359 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="重复序列注释软件REPET, code bioinformatics">
+    <meta name="baidu-site-verification" content="upBb6uT01u">
+    <meta name="google-site-verification" content="ZUIsMfD3SZEHDz8v4nPW-lm13IBmpOp_vyC-G3jATS8">
+    <meta name="description" content="简介REPET是一个寻找基因组中的重复序列并进行注释和分析的软件。主要分为两个部分  
+
+TEdenovo
+TEannot
+
+TEdenovo部分是通过denovo的方式找寻重复序列首先使用BLASTER对基因组进行自身比对使用RECON、">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>重复序列注释软件REPET | 山海之间</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">山海之间</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/contact" class="waves-effect waves-light">
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">山海之间</div>
+        <div class="logo-desc">
+            
+            碎碎念念，写写记记
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/contact" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-link"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/chenxj1101" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/chenxj1101" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        重复序列注释软件REPET
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                        <a href="/tags/bioinformatics/" target="_blank">
+                            <span class="chip bg-color">bioinformatics</span>
+                        </a>
+                        
+                        <a href="/tags/REPET/" target="_blank">
+                            <span class="chip bg-color">REPET</span>
+                        </a>
+                        
+                        <a href="/tags/科研/" target="_blank">
+                            <span class="chip bg-color">科研</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/生信/" class="post-category" target="_blank">
+                            生信
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-10-15
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                    chenxj
+                    
+                </div>
+
+                
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+                
+
+                
+                <div id="busuanzi_container_page_pv" class="info-break-policy">
+                    <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                    <span id="busuanzi_value_page_pv"></span>
+                </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>REPET是一个寻找基因组中的重复序列并进行注释和分析的软件。主要分为两个部分  </p>
+<ol>
+<li>TEdenovo</li>
+<li>TEannot</li>
+</ol>
+<p><strong>TEdenovo</strong>部分是通过denovo的方式找寻重复序列<br>首先使用BLASTER对基因组进行自身比对<br>使用RECON、GROUPER、PILER这3个软件进行聚类，并匹配寻找散在重复<br>对每一个聚类结果进行多序列比对得到一致性序列<br>最后根据TEs的特征对一致性序列进行分类，并去除冗余序列，得到一个TE sequences的库<br><img src="https://urgi.versailles.inra.fr/var/storage/images/media/images/te_denovo/8252-4-eng-GB/TE_DeNovo.png" alt="TEdenovo">  </p>
+<p><strong>TEannot</strong>部分是konowledge based的方式找寻重复序列<br>首先是使用BLASTER、RepeatMasker、CENSOR寻找基因组中的重复序列（库文件可以是TEdenovo产生的，也可以是其他的）<br>然后根据经验值对假阳性匹配进行过滤<br>通过TRF、RepeatMasker、MREPS寻找并注释基因组中的SSR<br>使用MATCHER将属于同一个TE的片段链接起来<br>最后将注释以GFF3或gameXML的形式输出  </p>
+<p><img src="https://urgi.versailles.inra.fr/var/storage/images/media/images/te_annot/8256-3-eng-GB/TE_Annot.png" alt="TEannot">  </p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>首先请先创建项目目录，然后将基因组文件（fa格式）链接或复制到目录。<br>因为REPET的任务信息以及某些数据是通过Mysql操作的，所以事先需要有Mysql的账号，以及一个能使用的库。然后请以以下格式保存  </p>
+<blockquote>
+<p>mysql_user<br>mysql_pawd<br>datebase</p>
+</blockquote>
+<p>项目目录里两个文件齐全后，请运行以下脚本，会自动生成REPET所需要的配置文件以及接下来需要运行的任务脚本  </p>
+<pre><code>python /p299/user/og06/chenxiangjian1609/software/REPET/ready.py -i test.fa -p project -g 55 -d db.cfg</code></pre><h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><p>-i 表示输入文件，需要是fa格式的<br>-p 表示项目名称，REPET要求fa文件要与项目名称一致，所以脚本会进行重命名<br>-g 输入文件的大小，以M(兆)为单位<br>-d 数据库配置文件，即上面提到的保存Mysql信息的文件  </p>
+<p>也可以直接用-h参数查看说明：</p>
+<pre><code>           -i: the input file, must  fasta file
+           -p: the project name
+           -g: the size of genome, the unit is MB
+           -d: the database config file
+           -h: print this help
+Example:
+           python /p299/user/og06/chenxiangjian1609/software/REPET/ready.py -i test.fa -p project -g 55 -d db.cfg</code></pre><p>REPET要求基因组文件为标准的fa文件，<strong>即每行的碱基数为60个，所以脚本里调用了Itools进行格式化（不管是否符合标准）</strong>。<br>同时还要求fa文件中，每段序列的名称以“&gt;XX_i”的形式命名。名称中<strong>不要出现除“_”以外的特殊符号</strong>。<br>运行完毕后会生成这样的一个文件目录结构(文件名称与实际参数有关)</p>
+<pre><code>|-- db.cfg
+|-- genome.fa -&gt; /p299/user/og06/chenxiangjian1609/test_REPET/test3/test.fa
+|-- prj_1220.fa
+|-- step1_TEdenovo.sh
+|-- step2_TEannot.sh
+|-- step3_statistic.sh
+|-- step4_mask.sh
+|-- TEannot
+|   |-- change_status.sh
+|   |-- clean_jobs.sh
+|   |-- prj_1220.fa -&gt; /p299/user/og06/chenxiangjian1609/test_REPET/test_1220/prj_1220.fa
+|   |-- repbase20.05_aaSeq_cleaned_TE.fa
+|   |-- repbase20.05_ntSeq_cleaned_TE.fa
+|   |-- run_TEannot.sh
+|   |-- setEnv.sh
+|   `-- TEannot.cfg
+`-- TEdenovo
+    |-- change_status.sh
+    |-- clean_jobs.sh
+    |-- prj_1220.fa -&gt; /p299/user/og06/chenxiangjian1609/test_REPET/test_1220/prj_1220.fa
+    |-- run_TEdenovo.sh
+    |-- setEnv.sh
+    `-- TEdenovo.cfg</code></pre><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>接下来依次运行项目目录下的4个shell脚本即可。<br>建议每一步都使用nohup运行，如：<br><code>nohup sh ./step4_mask.sh &amp;</code></p>
+<h3 id="TEdenovo"><a href="#TEdenovo" class="headerlink" title="TEdenovo"></a>TEdenovo</h3><p>TEdenovo分为8个步骤，每一步的作用及产生的文件如下  </p>
+<h4 id="step1-Genomic-sequences-are-cut-into-batches"><a href="#step1-Genomic-sequences-are-cut-into-batches" class="headerlink" title="step1: Genomic sequences are cut into batches"></a>step1: Genomic sequences are cut into batches</h4><p>这一步是将基因组分成一定数量的chunk，默认是分成200k一个chunk,每个batch之间有10k的overlap，考虑序列长度的因素，有一部分chunk的长度是低于200K的。然后将一定数量的chunk合成一个batch，多少个chunk合成一个batch，由配置文件TEdenovo.cfg中的 min_nb_seq_per_batch参数决定。水稻测试时，这个参数为25,所以每个batch的大小约为200k<em>25=5M，batch80(最后一个)由于chuank数量不足，大小约1.8M。<br>step1运行完毕会生成 <em>*REPET_rice_db</em></em> 文件夹：  </p>
+<pre class="line-numbers language-sh"><code class="language-sh">|-- batches  #存放batch_*.fa文件的文件夹
+|-- REPET_rice_chunks.fa  #原始基因组分成chunk后，将所有chunk合成一个新基因组文件，由于chunk有重叠，所以比原始文件大
+`-- REPET_rice_chunks.map  #chunk的map文件，说明每个chuank的来源
+1 directory, 2 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="step2-The-genome-is-aligned-to-itself-using-Blast"><a href="#step2-The-genome-is-aligned-to-itself-using-Blast" class="headerlink" title="step2: The genome is aligned to itself using Blast"></a>step2: The genome is aligned to itself using Blast</h4><p>第二步是将step1中的每个batch与由chunk合成的基因组进行自身比对寻找HSPs（high-scoring segment pairs），使用的是REPET自己封装的blast。这一步花费的时间较长，对于大基因组来说占用的内存也较大。<br>step2运行完毕会生成  <strong>REPET_rice_Blaster</strong> 文件夹  </p>
+<pre class="line-numbers language-sh"><code class="language-sh">|-- REPET_rice.align.not_over.filtered  #保存HSPs的文件
+`-- TEdenovo.cfg #调用的配置文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="step2-structural-LTRs-retrotransposons-are-searched-in-each-batch-using-LTRharves"><a href="#step2-structural-LTRs-retrotransposons-are-searched-in-each-batch-using-LTRharves" class="headerlink" title="step2 structural: LTRs retrotransposons are searched in each batch using LTRharves"></a>step2 structural: LTRs retrotransposons are searched in each batch using LTRharves</h4><p>这一步是使用LTRharves软件从每个barch中寻找LTR转座子, Step 2 和 step 2 ‘structural’是独立的，不存在什么关系<br>step2 structural运行完毕会生成 <strong>REPET_rice_LTRharvest</strong> 文件夹，里面包含了每个batch的LTRharves结果，以fa文件的形式保存，结果较多，这里不作展示  </p>
+<h4 id="step3-The-repetitives-HSP-from-BLAST-are-clustered-by-Recon-Grouper-and-or-Piler"><a href="#step3-The-repetitives-HSP-from-BLAST-are-clustered-by-Recon-Grouper-and-or-Piler" class="headerlink" title="step3 The repetitives HSP from BLAST are clustered by Recon, Grouper and/or Piler"></a>step3 The repetitives HSP from BLAST are clustered by Recon, Grouper and/or Piler</h4><p>使用Recon、Grouper、Piler这3个软件对blast出来的HSP进行聚类<br>这步运行完毕，每个方法都会生成对应的一个文件夹</p>
+<pre class="line-numbers language-sh"><code class="language-sh">REPET_rice_Blaster_Grouper
+REPET_rice_Blaster_Recon
+REPET_rice_Blaster_Piler<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>每个文件夹内均包含一个 <strong>REPET_rice_Blaster_<method>_3elem_20seq.fa</method></strong>文件，里面含有序列信息，每个序列的名称表明了它所在的分类  </p>
+<h4 id="Step-3-structural-The-predictions-from-LTRharvest-are-clustered-using-Blastclust-or-MCL"><a href="#Step-3-structural-The-predictions-from-LTRharvest-are-clustered-using-Blastclust-or-MCL" class="headerlink" title="Step 3 structural : The predictions from LTRharvest are clustered using Blastclust or MCL"></a>Step 3 structural : The predictions from LTRharvest are clustered using Blastclust or MCL</h4><p>使用blastclust或者MCL对LTRharvest的结果进行聚类，这一步的作用于上一步相同，生成的文件也是类似的，同样包含 <strong>REPET_rice_Blaster_<method>_3elem_20seq.fa</method></strong>文件 </p>
+<h4 id="Step-4-A-multiple-alignment-is-computed-for-each-cluster-and-a-consensus-sequence-is-derived-from-each-multiple-alignment"><a href="#Step-4-A-multiple-alignment-is-computed-for-each-cluster-and-a-consensus-sequence-is-derived-from-each-multiple-alignment" class="headerlink" title="Step 4 : A multiple alignment is computed for each cluster, and a consensus sequence is derived from each multiple alignment"></a>Step 4 : A multiple alignment is computed for each cluster, and a consensus sequence is derived from each multiple alignment</h4><p>对前面步骤的4个聚类结果进行多序列比对，每一个多序列比对都会有一个consensus sequence。每个聚类方法都会生成一个对应的文件夹，而consensus sequece则保存在相应文件夹内的 <strong>REPET_rice_Blaster_Grouper_Map_consensus.fa</strong>文件内  </p>
+<pre class="line-numbers language-sh"><code class="language-sh">REPET_rice_Blaster_Grouper_Map
+REPET_rice_Blaster_Recon_Map
+REPET_rice_Blaster_Piler_Map
+REPET_rice_LTRharvest_Blastclust_Map<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于进行了多序列比对，所以每个文件夹内都含有非常多的小文件，ls的时候会非常卡，不建议进行此类操作  </p>
+<h4 id="Step-5-Particular-features-are-detected-on-each-consensus-such-as-structural-features-or-homology-with-known-TE-HMM-profiles-or-host-genes"><a href="#Step-5-Particular-features-are-detected-on-each-consensus-such-as-structural-features-or-homology-with-known-TE-HMM-profiles-or-host-genes" class="headerlink" title="Step 5 : Particular features are detected on each consensus, such as structural features or homology with known TE, HMM profiles or host genes"></a>Step 5 : Particular features are detected on each consensus, such as structural features or homology with known TE, HMM profiles or host genes</h4><p>这步其实是使用PASTEClassifier程序的第一步来寻找确定consensus的特征。<br>setp5运行完毕后会生成 <strong>REPET_rice_Blaster_GrpRecPil_Struct_Map_TEclassif</strong>文件夹，由于里面的文件会被step6用到并修改，所以在step6再说明文件。同时这步也会在mysql数据库里创建其他的一些表，如：REPET_rice_polyA_set、REPET_rice_ORF_map、REPET_rice_chk_TRF_set，后续步骤也会用到。  </p>
+<h4 id="Step-6-The-consensus-are-classified-using-Wicker’s-classification"><a href="#Step-6-The-consensus-are-classified-using-Wicker’s-classification" class="headerlink" title="Step 6 : The consensus are classified using Wicker’s classification"></a>Step 6 : The consensus are classified using Wicker’s classification</h4><p>step6是根据step5确定的consensus的特征对consensus进行分类，使用的是REPET自带的PASTEC tool。PASTEC分类是基于Wicker’s classification，所以如果分类出来的TEs的命名规则为：  </p>
+<pre class="line-numbers language-s"><code class="language-s">{Wicker's classification code}_{consensus name}
+{Wicker's classification code}-{completeness}_{consensus name}
+{Wicker's classification code}-{completeness}-{potential chimeric}_{consensus name}
+{Wicker's classification code}-{completeness}-{potential chimeric}_{consensus name}_{reversed}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>样例： </p>
+<pre class="line-numbers language-sh"><code class="language-sh">Complete Copia retrotransposon : RLX-comp_ProjectName-L-B270-Map20
+LARD : RXX-LARD_ProjectName-B-R270-Map3
+Incomplete TIR: DTX-incomp_ProjectName-B-P350-Map5
+Retrotransposon: RXX_ProjectName-L-B28-Map1
+TIR potentially chimeric: DTX-comp-chim_ProjectName-B-G78-Map6
+Host gene: PotentialHostGene_ProjectName-B-R52-Map3
+Not classified: noCat_ProjectName-B-R878-Map8
+Not classified re-qualified like a RLX: noCat-RLX-like_ProjectName-B-G143-Map12
+Incomplete retrotransposon originally found in negative strand: RLX-incomp_RLX-incomp_ProjectName-L-B230-Map1_reversed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>step6运行完毕后，<strong>REPET_rice_Blaster_GrpRecPil_Struct_Map_TEclassif</strong>里包含2个文件夹：</p>
+<pre><code>|-- classifConsensus  
+|   |-- REPET_rice_Blaster_GrpRecPil_Struct_Map_consensus.fa -&gt; ../detectFeatures/REPET_rice_Blaster_GrpRecPil_Struct_Map_consensus.fa  #consensus的fa文件
+|   |-- REPET_rice.classif  #重复序列分类结果文件
+|   |-- REPET_rice.classif_stats.txt #重复序列分类结果统计文件
+|   |-- REPET_rice_denovoLibTEs.fa -&gt; REPET_rice_withoutRedundancy_negStrandReversed_WickerH.fa #denovo方式最后得到的TE library
+|   |-- REPET_rice_withoutRedundancy.classif  #去冗余的分类结果文件
+|   |-- REPET_rice_withoutRedundancy.classif_stats.txt  #去冗余的分类结果统计文件
+|   |-- REPET_rice_withoutRedundancy.fa  #去冗余结果的fa文件
+|   |-- REPET_rice_withoutRedundancy_negStrandReversed.classif   #去冗余并负义链反转的分类结果文件
+|   |-- REPET_rice_withoutRedundancy_negStrandReversed.fa  #去容易并负义链反转的fa文件
+|   |-- REPET_rice_withoutRedundancy_negStrandReversed_WickerH.classif #以Wicker code开头命名的分类结果文件
+|   |-- REPET_rice_withoutRedundancy_negStrandReversed_WickerH.classif_stats.txt #上一个文件的统计结果
+|   |-- REPET_rice_withoutRedundancy_negStrandReversed_WickerH.fa #最终结果的fa文件
+|   `-- TEdenovo.cfg -&gt; ../../TEdenovo.cfg
+`-- detectFeatures
+    |-- ORF 
+    |   `-- REPET_rice.ORF.map #ORF结果集
+    |-- polyA
+    |   `-- REPET_rice.polyA.set  # PolyA结果集
+    |-- REPET_rice_Blaster_GrpRecPil_Struct_Map_consensus.fa
+    |-- SSR
+    |   `-- REPET_rice.SSR.set #SSR结果集
+    |-- TEdenovo.cfg -&gt; ../../TEdenovo.cfg
+    `-- TR
+        `-- REPET_rice.TR.set #TR结果集
+
+6 directories, 19 files</code></pre><p>生成的classif文件里没有表头，通过查询mysql数据库里的相应的表，各列的表头如下：</p>
+<p>seq_name | length | strand | status | class_classif | order_classif | completeness | evidence<br>—|— | —|—|—|—|—|—|—|—|—|—<br>noCat_REPET_rice-B-G10008-Map3 | 516 | .| ok| noCat| noCat| NA| CI=NA; struct=(SSRCoverage=0.21)<br>SSR_REPET_rice-B-G10016-Map3 | 623| .| ok| NA| SSR| NA| CI=100; struct=(TElength: &gt;100bps; SSRCoverage=0.77)<br>DXX-MITE_REPET_rice-B-G10034-Map4| 590| .| ok| II| MITE| NA| CI=20; struct=(TElength: &lt;700bps; TermRepeats: termTIR: 34); other=(TermRepeats: non-termLTR: 115; SSRCoverage=0.00)    </p>
+<p><strong>Wicker’s code：</strong>   </p>
+<pre class="line-numbers language-sh"><code class="language-sh">Transposable elements :
+    Class I (RXX)
+        DIRS (RYX)
+        LARD (RXX-LARD)
+        LINE (RIX)
+        LTR (RLX)
+        PLE (RPX)
+        SINE (RSX)
+        TRIM (RXX-TRIM)
+
+    Class II (DXX)
+        Crypton (DYX)
+        Helitron (DHX)
+        MITE (DXX-MITE)
+        Maverick (DMX)
+        TIR (DTX)
+    noCat (sequence not classified at class AND order levels) 
+    XXX (sequence not classified at class level and with potential several orders)
+
+Not transposable elements :
+    PotentialHostGene
+    rDNA
+    SSR<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Step-7-SSR-and-under-represented-unclassified-consensus-are-filtered"><a href="#Step-7-SSR-and-under-represented-unclassified-consensus-are-filtered" class="headerlink" title="Step 7 : SSR and under-represented unclassified consensus are filtered"></a>Step 7 : SSR and under-represented unclassified consensus are filtered</h4><p>这一步是将上一步得到的最后结果进行SSR和低置信度的未分类consensus进行过滤<br>运行完毕后生成 <strong>REPET_rice_Blaster_GrpRecPil_Struct_Map_TEclassif_Filtered</strong> 文件夹：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">|-- classifFileFromList.classif  #过滤后的分类文件
+|-- classifFileFromList.classif_stats.txt  #过滤后的分类统计文件
+|-- REPET_rice_denovoLibTEs_filtered.fa  #过滤后的序列文件
+`-- TEdenovo.cfg -> /p299/user/og06/chenxiangjian1609/test_REPET/REPET_rice364/TEdenovo/TEdenovo.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>文件格式与step6相同</p>
+<h4 id="Step-8-The-consensus-are-clustered-into-families-to-facilitate-manual-curation-using-Blastclust-or-MCL"><a href="#Step-8-The-consensus-are-clustered-into-families-to-facilitate-manual-curation-using-Blastclust-or-MCL" class="headerlink" title="Step 8 : The consensus are clustered into families to facilitate manual curation using Blastclust or MCL"></a>Step 8 : The consensus are clustered into families to facilitate manual curation using Blastclust or MCL</h4><p>使用Blastclust或MCL对denovo consensus进行聚类，每种方法都会生成一个对应的文件夹  </p>
+<pre><code>REPET_rice_Blaster_GrpRecPil_Struct_Map_TEclassif_Filtered_Blastclust
+REPET_rice_Blaster_GrpRecPil_Struct_Map_TEclassif_Filtered_MCL</code></pre><p>以REPET_rice_Blaster_GrpRecPil_Struct_Map_TEclassif_Filtered_Blastclust为例：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">|-- REPET_rice_denovoLibTEs_filtered_Blastclust_clusterCons.tab #聚类后表格，每一行代表一个cluster
+|-- REPET_rice_denovoLibTEs_filtered_Blastclust.fa  #聚类后的序列文件，序列名称里的Blc1，即代表cluster的名称
+|-- REPET_rice_denovoLibTEs_filtered_Blastclust_globalStatsPerCluster.txt #对所有cluster的统计信息
+|-- REPET_rice_denovoLibTEs_filtered_Blastclust.statsPerCluster.tab #每个cluster的统计信息
+|-- REPET_rice_denovoLibTEs_filtered.fa -> ../REPET_rice_Blaster_GrpRecPil_Struct_Map_TEclassif_Filtered/REPET_rice_denovoLibTEs_filtered.fa 
+`-- TEdenovo.cfg -> /p299/user/og06/chenxiangjian1609/test_REPET/REPET_rice364/TEdenovo/TEdenovo.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>ste8、step7、step6生成的序列文件均可以作为TEannot的参考TEs library。一般情况还是使用step8的结果文件。  </p>
+<h3 id="TEannot"><a href="#TEannot" class="headerlink" title="TEannot"></a>TEannot</h3><p>TEannot同样分为8个步骤</p>
+<h4 id="Step-1-genomic-sequence-and-data-banks-preparation"><a href="#Step-1-genomic-sequence-and-data-banks-preparation" class="headerlink" title="Step 1 genomic sequence and data banks preparation"></a>Step 1 genomic sequence and data banks preparation</h4><p>这一步与TEdenovo的step1类似，也是将基因组分成一定数量的batch，不同的是还增加了一个将batch随机化的的内容，所以生成这一步会在<strong>REPET_rice_db</strong>生成两个文件夹：</p>
+<pre><code>|-- batches  #分割后的batch
+|-- batches_rnd  #随机化后的batch
+|--other files</code></pre><h4 id="Step2-Align-the-reference-TE-sequences-on-each-chunk"><a href="#Step2-Align-the-reference-TE-sequences-on-each-chunk" class="headerlink" title="Step2 Align the reference TE sequences on each chunk"></a>Step2 Align the reference TE sequences on each chunk</h4><p>这一步是使用Blaster、RepeatMasker、CENSOR这3种软件将chunk比对到参考的TE library（TEdenovo生成的结果，也可以使用其他的TE library）。由于CENSOR安装不成功，所以只用到了Blaster和RepeatMasker。除了正常的chunk比对到TE library，随机化的chunk也要和TE library做比对。所以这步会生成两个文件夹：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">REPET_rice_TEdetect
+REPET_rice_TEdetect_rnd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>在两个文件夹内，每个方法都会生成相应的文件夹，里面包含自己的比对结果  </p>
+<h4 id="Step-3-Filter-and-combine-HSP"><a href="#Step-3-Filter-and-combine-HSP" class="headerlink" title="Step 3 Filter and combine HSP"></a>Step 3 Filter and combine HSP</h4><p>这一步是从step2的结果中过滤并合并HSPs, 然后<strong>REPET_rice_TEdetect</strong>目录下生成一个<strong>Comb</strong>的目录，里面包含每个batch比对的<strong>newScores</strong>文件和<strong>newScores.clean_match.map</strong>  </p>
+<h4 id="Step-4-Search-for-SSR-amp-Step-5-Merge-SSR-annotations"><a href="#Step-4-Search-for-SSR-amp-Step-5-Merge-SSR-annotations" class="headerlink" title="Step 4: Search for SSR &amp; Step 5 Merge SSR annotations"></a>Step 4: Search for SSR &amp; Step 5 Merge SSR annotations</h4><p>使用TRF、REPEATMASKER、Mreps这3个软件寻找基因组中的SSR, 然后将这3个软件的结果整合，并将数据存入mysql数据库<br>运行结束会在生成<strong>REPET_rice_SSRdetect</strong>文件夹 </p>
+<pre class="line-numbers language-sh"><code class="language-sh">.
+|-- Comb
+|-- Mreps
+|-- RMSSR
+`-- TRF<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>各目录内包含各软件的结果，comb目录内不含实际数据，整合后的数据在数据库中  </p>
+<h4 id="Step-6-Comparison-with-data-banks"><a href="#Step-6-Comparison-with-data-banks" class="headerlink" title="Step 6 Comparison with data banks"></a>Step 6 Comparison with data banks</h4><p>这一步是将各batch比对到已有的重复序列数据库，水稻数据测试使用的是repbase的数据库，需要使用REPET专用的版本。分别比对到核酸数据和氨基酸数据，运行后会在<strong>REPET_rice_TEdetect</strong>目录下生成2个文件夹：</p>
+<pre><code>bankBLRtx
+bankBLRx</code></pre><h4 id="Step-7-Remove-spurious-HSPs-and-long-join-procedure"><a href="#Step-7-Remove-spurious-HSPs-and-long-join-procedure" class="headerlink" title="Step 7 Remove spurious HSPs and long join procedure"></a>Step 7 Remove spurious HSPs and long join procedure</h4><p>这一步会去除假的HSPs（比如全部由SSR组成的HSPs）并加入由片段链接起来的TEs<br>这步不会生成任何文件，但是在mysql里会生成相应的表，数据都存在数据库中  </p>
+<h4 id="Step-8-TE-annotation-export"><a href="#Step-8-TE-annotation-export" class="headerlink" title="Step 8 TE annotation export"></a>Step 8 TE annotation export</h4><p>从最终的mysql数据库中的表格里导出TE的注释，可以选择生成GFF3或者gameXML的格式，每种格式都会生成对应的文件夹  </p>
+<pre class="line-numbers language-sh"><code class="language-sh">REPET_rice_gameXMLchr
+REPET_rice_GFF3chr<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>以REPET_rice_GFF3chr为例：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">|-- annotation_tables.txt
+|-- chr01.gff3
+|-- chr02.gff3
+|-- chr03.gff3
+|-- chr04.gff3
+|-- chr05.gff3
+|-- chr06.gff3
+|-- chr07.gff3
+|-- chr08.gff3
+|-- chr09.gff3
+|-- chr10.gff3
+|-- chr11.gff3
+|-- chr12.gff3
+`-- chrnew01.gff3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>每条染色体都对应一个文件  </p>
+<h4 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h4><ol>
+<li><p>TEdenovo和TEannot中均有寻找SSR的步骤：<br>在TEdenovo的step5中，是在step4生成的重复序列的一致性序列中寻找SSR，目的是为了区分真正的TEs和SSRs,并在step7里将SSR过滤掉<br>在TEannot中，是在整个基因组当中寻找SSR，目的是为了过滤掉某些看起来像是TE annotation但实际是完全由SSR覆盖的序列   </p>
+</li>
+<li><p>chunk和batch的关系<br>在step1中，会将基因组分成一定数量的chunk，每个chunk大小为200k, 每个chunk之间有10k的overlap。<br>batch是一定数量的chunk的集合，这个数量的定义是：  </p>
+</li>
+</ol>
+<p><strong>minimum number of chunks per batch launched in parallel</strong><br>即每个batch运行时，并行的最小chunk数。<br>REPET中实际使用的其实是chunk，所有的操作都是基于chunk。batch只是代表了并行运行的chunk的数量</p>
+<h3 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h3><h4 id="note1："><a href="#note1：" class="headerlink" title="note1："></a>note1：</h4><p>REPET会自动把任务投递到集群上运行，在TEdenovo.cfg和TEannot.cfg中均可以修改相应的集群资源参数，包括使用的节点和要求的内存、CPU。ready.py那个脚本已经根据基因组大小对要求的资源做了一个粗略的区分。实际运行时如果觉得不妥当也可以人工去修改。<br><img src="http://oht4p9vad.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720161219110044.png" alt="resource">  </p>
+<h4 id="note2"><a href="#note2" class="headerlink" title="note2"></a>note2</h4><p>TEdenovo和TEannot各自均分为8小步，每一步运行完毕都会在输出日志文件中显示成功运行，如：<br><img src="http://oht4p9vad.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161219110804.png" alt="success"><br>如果中间运行出错，也可以寻找相应步骤的日志文件，查看错误原因，然后重新运行。可以根据实际情况选择重新运行单步，或者全部重新运行。在TEdenovo和TEannot文件夹下，还有<strong>run_TExxxxx.sh</strong>,可以从这个文件运行。  </p>
+<p><u>重新运行前，请一定要运行下TEdenovo或TEannot目录下的<strong>clean_jobs.sh</strong>这个脚本，清除掉数据库中jobs表里的数据，不然之前的错误任务是不会停止的。</u></p>
+<h4 id="note3"><a href="#note3" class="headerlink" title="note3"></a>note3</h4><p>REPET投递的任务有时候会莫名的停止，特别是在做比对的时候。一般分为两种情况： </p>
+<ol>
+<li>第一种是由于节点资源的原因，任务跑失败了，REPET会进行重投，默认重投是2次，2次均失败后，任务就会停止。所以修改了REPET源码里的重投次数，改成了6次。应该能避免这一类问题。</li>
+<li>第二种就比较诡异了，REPET调用的程序（如blaster)其实已经运行结束了，结果文件也产生了。但是数据库的jobs表中status字段依然还是”running”。而且通过qsee命令查看这个任务，也是运行的状态，但是cpu时间已经不动了。导致程序没有继续跑下去。所以这个时候需要去修改mysql表里的状态，可以使用TEdenovo或TEannot目录下的<strong>change_status.sh</strong>脚本：<pre class="line-numbers language-shell"><code class="language-shell">sh ./change_status.sh xxxxxxx(通过qsee等命令看到的job_ID)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+之后程序就能继续运行。这个问题目前都是随机出现，不知道原因出在哪里。</li>
+</ol>
+<h4 id="note4"><a href="#note4" class="headerlink" title="note4"></a>note4</h4><p>如果遇上Grouper(TEdenovo-step3)报下面这类错误：  </p>
+<pre><code>grouper: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.15&#39; not found (required by grouper)</code></pre><p>这个错误是集群环境的原因，所以直接在环境变量中加入动态库就可以了。具体就在自己的.zshrc或.bashrc里加入</p>
+<pre><code>GCC_LIB=&quot;/nfs2/config/gcc/gcc-4.9.2/lib/:/nfs2/config/gcc/gcc-4.9.2/lib64/&quot;
+export PATH=&quot;$GCC_LIB:$PATH&quot;  </code></pre><h4 id="note5"><a href="#note5" class="headerlink" title="note5"></a>note5</h4><p>Piler（TEdenovo-step3）由于自身软件原因，当基因组大小超过500M的时候，就会报“out of memory”的错误。<br>此时可以直接注释掉运行Piler的步骤。<br>同时将后续的步骤中的<strong>-GrpRecPil</strong>参数修改为<strong>-GrpRec</strong>。  </p>
+<h3 id="Advance"><a href="#Advance" class="headerlink" title="Advance"></a>Advance</h3><p>由于REPET最后的输出结果只有GFF3文件或者gameXML文件，缺少统计信息。所以写了个脚本对输出的GFF3文件进行统计，输出结果样例如下：<br><img src="http://oht4p9vad.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161219113907.png" alt="statistic">  </p>
+<p>为了方便后续的基因注释等流程，还增加了一步使用repeatmasker对基因组文件中的重复序列进行注释的步骤（step4）。最后会在项目目录下输出xxxx.masked.fa文件。</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p>REPET官网：<a href="https://urgi.versailles.inra.fr/Tools/REPET" target="_blank" rel="noopener">https://urgi.versailles.inra.fr/Tools/REPET</a><br>TEdenovo文档： <a href="https://urgi.versailles.inra.fr/Tools/REPET/TEdenovo-tuto" target="_blank" rel="noopener">https://urgi.versailles.inra.fr/Tools/REPET/TEdenovo-tuto</a><br>TEannot文档： <a href="https://urgi.versailles.inra.fr/Tools/REPET/TEannot-tuto" target="_blank" rel="noopener">https://urgi.versailles.inra.fr/Tools/REPET/TEannot-tuto</a><br>demo服务器路径：/p299/user/og06/chenxiangjian1609/test_REPET/test_1220</p>
+<p>REPET的文档十分详细，包括每一小步是做什么的，以及每一步运行的命令均有说明。<br>ready.py生成的配置文件基本是按照默认参数生成的，实际运行中可以参考文档，对生成的配置文件进行修改。</p>
+
+            </div>
+            <hr />
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">随意~~</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《重复序列注释软件REPET》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                chenxj
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '3d91bd440b1cd9ff91d1',
+        clientSecret: '9bbf012a49b9d38219e86ffa6a45c8cf774e7c59',
+        repo: 'chenxj1101.github.io',
+        owner: 'chenxj1101',
+        admin: "chenxj1101",
+        id: '2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/07/28/umi-jian-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="UMI简介">
+                        
+                        <span class="card-title">UMI简介</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            对`UMI`的做个简单总结
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/生信/" class="post-category" target="_blank">
+                                    生信
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/bioinformatics/" target="_blank">
+                        <span class="chip bg-color">bioinformatics</span>
+                    </a>
+                    
+                    <a href="/tags/UMI/" target="_blank">
+                        <span class="chip bg-color">UMI</span>
+                    </a>
+                    
+                    <a href="/tags/NGS/" target="_blank">
+                        <span class="chip bg-color">NGS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/09/29/chong-fu-xu-lie-lei-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="重复序列类型">
+                        
+                        <span class="card-title">重复序列类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            之前用REPET这个软件进行了基因组的重复序列注释，现在整理一下关于重复序列的内容，主要包括重复序列的类型，以及各类型的结构特点和特定的预测软件，最后罗列几个与REPET类似的pipeline软件。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/生信/" class="post-category" target="_blank">
+                                    生信
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/bioinformatics/" target="_blank">
+                        <span class="chip bg-color">bioinformatics</span>
+                    </a>
+                    
+                    <a href="/tags/科研/" target="_blank">
+                        <span class="chip bg-color">科研</span>
+                    </a>
+                    
+                    <a href="/tags/重复序列/" target="_blank">
+                        <span class="chip bg-color">重复序列</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 山海之间<br />'
+            + '作者: chenxj<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () { bodyElement.removeChild(newdiv); }, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2019 Chenxj. All Rights Reserved.
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">10.5k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chenxj1101" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chenxj799@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://zhihu.com/people/yantinger" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
+
+
+    <a href="https://user.qzone.qq.com/442185473" class="tooltipped" target="_blank" data-tooltip="访问我的QQ空间" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/442185473" class="tooltipped" target="_blank" data-tooltip="关注我的微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 80000;
+        var uvcountOffset = 20000;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2018, 01, 23, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103856239-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-103856239-2');
+</script>
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

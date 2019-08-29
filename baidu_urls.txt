@@ -1,1 +1,9 @@
+https://yantinger.com/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/
+https://yantinger.com/2019/07/28/umi-jian-jie/
+https://yantinger.com/2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/
+https://yantinger.com/2018/09/29/chong-fu-xu-lie-lei-xing/
+https://yantinger.com/2018/07/26/tensorflow-xiao-chang-shi/
+https://yantinger.com/2018/04/12/python-ti-qu-gff3-wen-jian-xin-xi/
+https://yantinger.com/2018/03/25/pyclone-an-zhuang-ce-shi/
+https://yantinger.com/2018/02/23/purecn-ce-shi/
 https://yantinger.com/2018/02/20/argparse-bao-shi-yong/
