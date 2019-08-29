@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yantinger.com/2018/01/22/2017-conclusion/</loc>
+    <loc>https://yantinger.com/404.html</loc>
     
-    <lastmod>2019-08-21T07:26:13.000Z</lastmod>
+    <lastmod>2019-08-29T05:49:21.950Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://yantinger.com/404.html</loc>
+    <loc>https://yantinger.com/2018/01/22/2017-conclusion/</loc>
     
     <lastmod>2019-08-21T07:26:13.000Z</lastmod>
     
@@ -23,7 +23,21 @@
   </url>
   
   <url>
+    <loc>https://yantinger.com/archives/index.html</loc>
+    
+    <lastmod>2019-08-21T07:26:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yantinger.com/contact/index.html</loc>
+    
+    <lastmod>2019-08-21T07:26:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yantinger.com/categories/index.html</loc>
     
     <lastmod>2019-08-21T07:26:13.000Z</lastmod>
     
@@ -38,20 +52,6 @@
   
   <url>
     <loc>https://yantinger.com/tags/index.html</loc>
-    
-    <lastmod>2019-08-21T07:26:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yantinger.com/categories/index.html</loc>
-    
-    <lastmod>2019-08-21T07:26:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yantinger.com/archives/index.html</loc>
     
     <lastmod>2019-08-21T07:26:13.000Z</lastmod>
     
