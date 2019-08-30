@@ -4,10 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="UMI简介, code bioinformatics">
+    <meta name="keywords" content="重复序列类型, code bioinformatics">
     <meta name="baidu-site-verification" content="upBb6uT01u">
     <meta name="google-site-verification" content="ZUIsMfD3SZEHDz8v4nPW-lm13IBmpOp_vyC-G3jATS8">
-    <meta name="description" content="UMI是什么UMI全称：Unique Molecular Identifiers。又称分子条形码技术，是对原始样本基因组打断后的每一个片段都加上一段特有的标签序列，用于区分同一样本中成千上万的不同的片段，在后续的数据分析中可以通过这些标签序">
+    <meta name="description" content="重复序列类型基因组中的重复序列依据其序列特征可以分为两类：  
+
+1.tandem repeats（串联重复序列）  
+2.dispersed repeats（分散重复序列） 
+
+分散重复序列的在基因组中主要是transposable el">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>UMI简介 | 山海之间</title>
+    <title>重复序列类型 | 山海之间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -289,13 +294,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        UMI简介
+                        重复序列类型
                     </div>
                 </div>
             </div>
@@ -410,12 +415,12 @@
                             <span class="chip bg-color">bioinformatics</span>
                         </a>
                         
-                        <a href="/tags/UMI/" target="_blank">
-                            <span class="chip bg-color">UMI</span>
+                        <a href="/tags/科研/" target="_blank">
+                            <span class="chip bg-color">科研</span>
                         </a>
                         
-                        <a href="/tags/NGS/" target="_blank">
-                            <span class="chip bg-color">NGS</span>
+                        <a href="/tags/重复序列/" target="_blank">
+                            <span class="chip bg-color">重复序列</span>
                         </a>
                         
                     </div>
@@ -438,13 +443,13 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-28
+                    2018-09-29
                 </div>
 
                 <div class="post-author info-break-policy">
                     <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
                     
-                    chenxj
+                    YTer
                     
                 </div>
 
@@ -452,14 +457,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    464
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
                 
@@ -475,18 +480,166 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="UMI是什么"><a href="#UMI是什么" class="headerlink" title="UMI是什么"></a>UMI是什么</h2><p><strong>UMI</strong>全称：<em>Unique Molecular Identifiers</em>。<br>又称分子条形码技术，是对原始样本基因组打断后的每一个片段都加上一段特有的标签序列，用于区分同一样本中成千上万的不同的片段，在后续的数据分析中可以通过这些标签序列来排除由于 <strong>DNA</strong> 聚合酶和扩增以及测序过程中所引入的错误。分子条形码通常由大约 <code>10nt</code> 左右的随机序列（比如 NNNNNNN)，或者简并碱基（NNNRNYN）组成。<br>有别于样品标签（<code>sample index</code> 或 <code>sample barcode</code>），分子条形码是针对同一个样本中的不同片段加上的标签序列，而样品标签是用于区分不同样本而加上的标签序列。<br>因此，每一个样本只能有一个相同的样品标签，但可以有成千上万的分子条形码。</p>
-<p><strong>UMI是给同一个样本的不同片段打上标签</strong></p>
-<h2 id="UMI加在哪里？"><a href="#UMI加在哪里？" class="headerlink" title="UMI加在哪里？"></a>UMI加在哪里？</h2><p>双端<code>index</code>，如果一端的<code>index</code>已经可以区分不同的样本。则另一端<code>index</code>的位置上可以用<code>UMI</code>来代替。即<code>UMI</code>在<code>index</code>的位置上。<code>UMI</code>的长度与<code>index</code>相同。</p>
-<p><code>UMI</code>也可以加在插入片段中，在<code>index</code>和<code>UMI</code>之间可能需要连接酶链接。在我们的某个项目中，<code>UMI</code>就是加在插入片段中，<code>index</code>和<code>UMI</code>之间有<code>8bp</code>的酶切位点。</p>
-<h2 id="UMI如何处理？"><a href="#UMI如何处理？" class="headerlink" title="UMI如何处理？"></a>UMI如何处理？</h2><p>使用<code>fastp</code>和<code>gencore</code>软件可以很方便的处理<code>UMI</code>。</p>
-<h3 id="标记UMI"><a href="#标记UMI" class="headerlink" title="标记UMI"></a>标记UMI</h3><p>使用<code>fastp</code>标记<code>reads</code>上的<code>UMI</code>序列</p>
-<pre class="line-numbers language-bash"><code class="language-bash">fastp -i R1.fq -o out.R1.fq -U --umi_loc<span class="token operator">=</span>read1 --umi_len<span class="token operator">=</span>8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>--umi_loc</code>指定<code>UMI</code>的位置，如果是在<code>reads</code>上，则还需要指定<code>UMI</code>的长度。</p>
-<p><a href="https://github.com/OpenGene/fastp" target="_blank" rel="noopener">FASTP用法</a></p>
-<h3 id="得到一致性序列"><a href="#得到一致性序列" class="headerlink" title="得到一致性序列"></a>得到一致性序列</h3><p>使用<code>gencore</code>的可以得到一致性序列</p>
-<pre class="line-numbers language-bash"><code class="language-bash">gencore -i in.bam -o out.bam -r hg19.fa -s 3 --umi_prefix<span class="token operator">=</span>UMI --ratio_threshold<span class="token operator">=</span>0.9 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+                <h2 id="重复序列类型"><a href="#重复序列类型" class="headerlink" title="重复序列类型"></a>重复序列类型</h2><p>基因组中的重复序列依据其序列特征可以分为两类：  </p>
+<ul>
+<li>1.tandem repeats（串联重复序列）  </li>
+<li>2.dispersed repeats（分散重复序列） </li>
+</ul>
+<p>分散重复序列的在基因组中主要是transposable elements(TEs)，也就是转座子。</p>
+<h2 id="串联重复序列"><a href="#串联重复序列" class="headerlink" title="串联重复序列"></a>串联重复序列</h2><p>串联重复序列按照其长度可以分为两类：</p>
+<ol>
+<li>microsatellites or simple sequence repeats（SSR）：由1-6bp的短重复单元组成</li>
+<li>minisatellites：由10-60bp的长重复单元组成  </li>
+</ol>
+<h3 id="转座子"><a href="#转座子" class="headerlink" title="转座子"></a>转座子</h3><p>转座子根据其转座的媒介和转座的机制，可以分成两大类：<br>第一类是以RNA为媒介，通过“copy and paste”机制进行转座<br>第二类是以DNA为媒介，通过“cut and paste”机制进行转座  </p>
+<p>在这两类中，又根据序列的结构特征可以进一步的进行分类<br>在第一类classⅠ中可以分为2类：<br>1.Long terminal repeat retrotransposon（LTR）<br>2.Non-LTR retrotransposon  </p>
+<p>在第二类classⅡ中，目前比较确定的可以分成3类：<br>1.TIR(Terminal Inverted Repeat)<br>2.MITE(miniature inverted repeat transposable elements)<br>3.Helitron  </p>
+<h4 id="LTR转座子"><a href="#LTR转座子" class="headerlink" title="LTR转座子"></a>LTR转座子</h4><p>LTR转座子，其基本特征是在3’末端有PBS结构，在5’末端有PPT结构，长度一般5-9kb之间，有些有编码能力，有些没有编码能力。根据结构的不同，又分为几个不同的子类型</p>
+<h4 id="non-LTR转座子"><a href="#non-LTR转座子" class="headerlink" title="non-LTR转座子"></a>non-LTR转座子</h4><p>non-LTR转座子分为2类：<br>1.LINE（long interspersed nuclear elements）<br>2.SINE（short interspersed elements）<br>non-LTR的结构特征是在3’末端有PolyA的尾巴，LINE相比SINE是有编码能力的，序列中间有ORF的存在。LINE的长度一般在5-8kb，SINE的长度一般在80-500bp，同样，LINE和SINE还可以再根据结构继续细分成不同的类型。</p>
+<h4 id="DNA转座子"><a href="#DNA转座子" class="headerlink" title="DNA转座子"></a>DNA转座子</h4><p>TIR转座子的结构特征是在序列两端有TIR（Terminal Inverted Repeat）序列，以及在序列中间有转座酶的序列，长度小于5kb</p>
+<p>MITE与TIR转座子相比，序列中间没有转座酶序列。比较特别的是，MITE虽然是DNA为转座媒介，但是其转座机制是“copy and paste”，长度在500bp左右</p>
+<p>Helitron的结构比较特殊，在其序列中间有一个RPAI Helicase，在3‘末端附近还有一个发夹结构，长度在5kb左右</p>
+<p>随着时间的发展，重复序列的分类也越来越精细，REPET软件中用到的Wicker’s classification分得更为详细（见最后） </p>
+<h2 id="重复序列鉴定软件"><a href="#重复序列鉴定软件" class="headerlink" title="重复序列鉴定软件"></a>重复序列鉴定软件</h2><p>重复序列鉴定软件主要分为两类<br>一类是基于已有的数据库或结构特征进行鉴定<br>一类是采用从头预测的方法进行鉴定<br>一些软件如下：</p>
+<ul>
+<li><p>基于已知的转座子数据库进行鉴定；<br>RepeatMasker<br>GREEDIER  </p>
+</li>
+<li><p>基于转座子的结构特征进行鉴定（主要用于TEs）；<br>LTR：LTRharvest、LTR_PAR、FIND_LTR、LTR-FINDER<br>non-LTR：TSDFINDER、SINEDR、RTANALYZER<br>MITEs：FINDMITE、TRANSPO、MITE-Hunter<br>Helitrons：HelitronFinder、HelitronScanner  </p>
+</li>
+<li><p>采用从头预测的方法对重复序列进行预测；<br>自我比对方法：RECON、PILER<br>Kmer法：REAS、REPEATSCOUT  </p>
+</li>
+<li><p>对串联重复序列进行鉴定<br>TRF<br>TRAP  </p>
+</li>
+</ul>
+<p>此外，还可以参考这篇<a href="http://www.nature.com/hdy/journal/v104/n6/fig_tab/hdy2009165t1.html#figure-title" target="_blank" rel="noopener">综述中罗列的软件</a>，非常全面。不过因为时间的原因，有些可能已经失效了。</p>
+<h2 id="pipeline程序"><a href="#pipeline程序" class="headerlink" title="pipeline程序"></a>pipeline程序</h2><p>REPET集成并使用了多个软件的结果，包括RECON、Pipler、Grouper、REPEATMASKER、Blaster、TRF、MREPS等。<br>其他还有一些pipeline程序，如：  </p>
+<p><strong>RepeatModeler</strong>：RepeatMasker、RECON、RepeatScout 、TRF、NSEG、Blast  </p>
+<p><strong>DAWGPAWS</strong>(用于植物注释）:LTR_STRUC, LTR_FINDER, LTR_PAR, FIND_LTR, FINDMITE, TRF, REPSEEK, REPEATMASKER and TENEST  </p>
+<p><strong>RETROPRED</strong>（鉴定LINE和SINE）： PALS、PILER、MEME、SNNS </p>
+<h2 id="Wicker’s-classification"><a href="#Wicker’s-classification" class="headerlink" title="Wicker’s classification"></a>Wicker’s classification</h2><pre><code>Transposable Element
+    ClassI
+        LTR retrotransposon
+            LTR
+                Copia
+                    TCN1-6
+                    TCN1-7
+                    TCN1-8
+                    TCN1-9
+                Gypsy
+                    TCN1-1
+                    TCN1-2
+                    TCN1-3
+                    TCN1-4
+                    TCN1-5
+                    TCN1-10
+                Bel-Pao
+                Retrovirus
+                ERV
+                    ERV1
+                    ERV2
+                    ERV3
+                    Lentivirus
+                    ERV4
+            DIRS
+                DIRS
+                Ngaro
+                VIPER
+            PLE
+                Penelope
+            LARD
+            TRIM
+        Non-LTR retrotransposon
+            LINE
+                R2
+                    CRE
+                    R4
+                    Hero
+                    NeSL
+                    R2
+                L1
+                    Proto1
+                    L1
+                    Tx1
+                RTE
+                    RTETP
+                    Proto2
+                    RTEX
+                    RTE
+                I
+                    Outcast
+                    Ingi
+                    I
+                    Nimb
+                    Tad1
+                    Loa
+                    R1
+                Jockey
+                    Jockey
+                    Rex1
+                    CR1
+                    L2
+                    L2A
+                    L2B
+                    Daphne
+                    Crack
+                ?
+                    RandI
+                    Vingi
+            SINE
+                SINE2/tRNA
+                SINE1/7SL
+                SINE3/5S
+                SINE4
+            ?
+                ?
+                    Ambal
+                    Kiri
+    ClassII
+        Subclass1
+            TIR
+                Tc1-Mariner
+                hAT
+                Mutator
+                Merlin
+                Transib
+                P
+                PiggyBac
+                PIF-Harbinger
+                MuDR
+                CACTA
+                    EnSpm
+            MITE
+            Crypton
+                CryptonA
+                CryptonF
+                CryptonI
+                CryptonS
+                CryptonV
+        Subclass2
+            Helitron
+                Helitron
+            Maverick
+                Maverick
+            Sola
+                Sola1
+                Sola2
+                Sola3
+        ?
+            ?
+                Transib
+                Novosib
+                Mirage
+                Rehavkus
+                Kolobok
+                ISL2EU
+                Chapaev
+                Zator
+                Ginger1
+                Ginger2/TDD
+                Academ
+                Zisupton
+                IS3EU
+                Dada</code></pre>
             </div>
             <hr />
 
@@ -644,11 +797,11 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《UMI简介》
+                    《重复序列类型》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/28/umi-jian-jie/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/09/29/重复序列类型/" property="cc:attributionName"
                rel="cc:attributionURL">
-                chenxj
+                YTer
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -687,7 +840,7 @@
         repo: 'chenxj1101.github.io',
         owner: 'chenxj1101',
         admin: "chenxj1101",
-        id: '2019/07/28/umi-jian-jie/',
+        id: '2018/09/29/重复序列类型/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -712,64 +865,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="vsftpd安装配置说明">
-                        
-                        <span class="card-title">vsftpd安装配置说明</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            帮公司安装测试了下vsftpd，做个记录。
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-29
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/ftp/" target="_blank">
-                        <span class="chip bg-color">ftp</span>
-                    </a>
-                    
-                    <a href="/tags/linux/" target="_blank">
-                        <span class="chip bg-color">linux</span>
-                    </a>
-                    
-                    <a href="/tags/vsftpd/" target="_blank">
-                        <span class="chip bg-color">vsftpd</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/">
+                <a href="/2018/10/15/重复序列注释软件REPET/">
                     <div class="card-image">
                         
                         
@@ -785,9 +881,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -813,6 +909,63 @@
                     
                     <a href="/tags/科研/" target="_blank">
                         <span class="chip bg-color">科研</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/07/26/tensorflow小尝试/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="tensorflow小尝试">
+                        
+                        <span class="card-title">tensorflow小尝试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在自己的笔记本上安装了tensorflow-gpu版本，做个记录。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tensorflow/" target="_blank">
+                        <span class="chip bg-color">tensorflow</span>
+                    </a>
+                    
+                    <a href="/tags/机器学习/" target="_blank">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/win10/" target="_blank">
+                        <span class="chip bg-color">win10</span>
                     </a>
                     
                 </div>
@@ -853,7 +1006,7 @@
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: 山海之间<br />'
-            + '作者: chenxj<br />'
+            + '作者: YTer<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 

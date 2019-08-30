@@ -4,12 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="vsftpd安装配置说明, code bioinformatics">
+    <meta name="keywords" content="UMI简介, code bioinformatics">
     <meta name="baidu-site-verification" content="upBb6uT01u">
     <meta name="google-site-verification" content="ZUIsMfD3SZEHDz8v4nPW-lm13IBmpOp_vyC-G3jATS8">
-    <meta name="description" content="vsftpd是在linux环境下，使用最多的FTP服务端软件。
-vsftpd默认只能使用root用户运行。使用非root用户运行，需要在配置文件里设置run_as_launching_user=YES。
-官方强烈不推荐使用这种方式启动，会带">
+    <meta name="description" content="UMI是什么UMI全称：Unique Molecular Identifiers。又称分子条形码技术，是对原始样本基因组打断后的每一个片段都加上一段特有的标签序列，用于区分同一样本中成千上万的不同的片段，在后续的数据分析中可以通过这些标签序">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +15,7 @@ vsftpd默认只能使用root用户运行。使用非root用户运行，需要在
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>vsftpd安装配置说明 | 山海之间</title>
+    <title>UMI简介 | 山海之间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -291,13 +289,13 @@ vsftpd默认只能使用root用户运行。使用非root用户运行，需要在
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        vsftpd安装配置说明
+                        UMI简介
                     </div>
                 </div>
             </div>
@@ -408,16 +406,16 @@ vsftpd默认只能使用root用户运行。使用非root用户运行，需要在
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/ftp/" target="_blank">
-                            <span class="chip bg-color">ftp</span>
+                        <a href="/tags/bioinformatics/" target="_blank">
+                            <span class="chip bg-color">bioinformatics</span>
                         </a>
                         
-                        <a href="/tags/linux/" target="_blank">
-                            <span class="chip bg-color">linux</span>
+                        <a href="/tags/UMI/" target="_blank">
+                            <span class="chip bg-color">UMI</span>
                         </a>
                         
-                        <a href="/tags/vsftpd/" target="_blank">
-                            <span class="chip bg-color">vsftpd</span>
+                        <a href="/tags/NGS/" target="_blank">
+                            <span class="chip bg-color">NGS</span>
                         </a>
                         
                     </div>
@@ -428,8 +426,8 @@ vsftpd默认只能使用root用户运行。使用非root用户运行，需要在
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Linux/" class="post-category" target="_blank">
-                            Linux
+                        <a href="/categories/生信/" class="post-category" target="_blank">
+                            生信
                         </a>
                         
                     </div>
@@ -440,13 +438,13 @@ vsftpd默认只能使用root用户运行。使用非root用户运行，需要在
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-29
+                    2019-07-28
                 </div>
 
                 <div class="post-author info-break-policy">
                     <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
                     
-                    chenxj
+                    YTer
                     
                 </div>
 
@@ -454,14 +452,14 @@ vsftpd默认只能使用root用户运行。使用非root用户运行，需要在
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    464
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
                 
@@ -477,123 +475,17 @@ vsftpd默认只能使用root用户运行。使用非root用户运行，需要在
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>vsftpd</code>是在<code>linux</code>环境下，使用最多的<code>FTP</code>服务端软件。</p>
-<p><code>vsftpd</code>默认只能使用root用户运行。使用非<code>root</code>用户运行，需要在配置文件里设置<code>run_as_launching_user=YES</code>。</p>
-<p><strong>官方强烈不推荐使用这种方式启动，会带来巨大的安全问题，并且会导致无法使用<code>chroot</code>技术来限制文件访问。</strong></p>
-<p>以下安装配置均在<code>root</code>账号下进行。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre class="line-numbers language-bash"><code class="language-bash">yum <span class="token function">install</span> -y vsftpd
-yum <span class="token function">install</span> -y db4 <span class="token comment" spellcheck="true">#设置虚拟账户的本地数据库文件用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>也可以下载源码安装，解压之后直接<code>make &amp; make install</code>即可安装。<br>不提供<code>configure</code>文件，所以无法指定路径。</p>
-<p>安装完成后会在相关目录生成文件，需要用到的如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">/usr/sbin/vsftpd <span class="token comment" spellcheck="true">#vsftpd可执行文件</span>
-
-/etc/vsftpd/vsftpd.conf <span class="token comment" spellcheck="true">#主配置文件</span>
-
-/etc/pam.d/vsftpd <span class="token comment" spellcheck="true">#PAM认证文件</span>
-
-/etc/vsftpd.ftpusers <span class="token comment" spellcheck="true">#禁用使用VSFTPD的用户列表文件</span>
-
-/etc/vsftpd.user_list <span class="token comment" spellcheck="true">#禁止或允许使用VSFTPD的用户列表文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="vsftpd主要配置"><a href="#vsftpd主要配置" class="headerlink" title="vsftpd主要配置"></a>vsftpd主要配置</h3><p>先对默认配置文件进行备份，再进行配置。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.bak<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>配置文件具体配置如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">anonymous_enable<span class="token operator">=</span>NO <span class="token comment" spellcheck="true">#不允许匿名登录</span>
-local_enable<span class="token operator">=</span>YES
-write_enable<span class="token operator">=</span>YES
-local_umask<span class="token operator">=</span>022  <span class="token comment" spellcheck="true">#上传文件权限补码，最终上传后的文件权限为  666-022=644</span>
-dirmessage_enable<span class="token operator">=</span>YES
-xferlog_enable<span class="token operator">=</span>YES
-connect_from_port_20<span class="token operator">=</span>YES
-xferlog_std_format<span class="token operator">=</span>YES
-ascii_upload_enable<span class="token operator">=</span>YES
-ascii_download_enable<span class="token operator">=</span>YES
-chroot_local_user<span class="token operator">=</span>NO <span class="token comment" spellcheck="true">#虚拟账户配置下，在下面两个chroot配置后，这个参数必须为NO，否则登陆FTP后还可以访问其他目录！</span>
-chroot_list_enable<span class="token operator">=</span>YES 
-allow_writeable_chroot<span class="token operator">=</span>YES
-chroot_list_file<span class="token operator">=</span>/home/ftp/config/chroot_list <span class="token comment" spellcheck="true">#指定不能离开家目录的用户列表文件，一行一个用户。使用此方法时必须chroot_local_user=NO。说明这个列表里面的用户登陆ftp后都只能访问其主目录，其他目录都不能访问！</span>
-listen<span class="token operator">=</span>YES <span class="token comment" spellcheck="true">#监听IPV4</span>
-listen_ipv6<span class="token operator">=</span>NO <span class="token comment" spellcheck="true">#监听IPV6，不能和上面的listen同时设置为YES</span>
-
-pam_service_name<span class="token operator">=</span>vsftpd <span class="token comment" spellcheck="true">#指定PAM配置文件，即下面的/etc/pam.d/vsftpd文件要和这里指定的一致</span>
-userlist_enable<span class="token operator">=</span>YES
-tcp_wrappers<span class="token operator">=</span>YES
-
-virtual_use_local_privs<span class="token operator">=</span>YES
-guest_enable<span class="token operator">=</span>YES <span class="token comment" spellcheck="true">#启用虚拟账户</span>
-guest_username<span class="token operator">=</span>chenxj <span class="token comment" spellcheck="true">#将虚拟用户映射为本地chenxj用户（前提是local_enable=YES），更安全的做法是映射为nobody用户，因为nobody的权限最低</span>
-
-user_config_dir<span class="token operator">=</span>/home/ftp/config/vuser_conf <span class="token comment" spellcheck="true">#指定不同虚拟用户配置文件的存放路径</span>
-
-listen_port<span class="token operator">=</span>21 <span class="token comment" spellcheck="true">#监听的ftp端口，改成其他端口，会导致无法启动</span>
-pasv_min_port<span class="token operator">=</span>40001 <span class="token comment" spellcheck="true">#分配给ftp账号的最小端口。被动模式下的配置</span>
-pasv_max_port<span class="token operator">=</span>40100 <span class="token comment" spellcheck="true">#分配给ftp账号的最大端口。每个账号分配一个端口，即最大允许100个ftp账号连接</span>
-max_clients<span class="token operator">=</span>150 <span class="token comment" spellcheck="true">#客户端的最大连接数</span>
-accept_timeout<span class="token operator">=</span>5
-connect_timeout<span class="token operator">=</span>1
-max_per_ip<span class="token operator">=</span>5 <span class="token comment" spellcheck="true">#每个ip最大连接数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>以上配置有修改，需要重启vsftpd服务才能生效</strong>。</p>
-<h3 id="虚拟账户设置"><a href="#虚拟账户设置" class="headerlink" title="虚拟账户设置"></a>虚拟账户设置</h3><p>在自己决定的目录（如：<code>/home/ftp/config</code>）新建<code>vuser_passwd.txt</code>，奇数行为账号，偶数行为密码:</p>
-<pre class="line-numbers language-bash"><code class="language-bash">user1  <span class="token comment" spellcheck="true">#账号1</span>
-user1@2018 <span class="token comment" spellcheck="true">#账号1密码</span>
-user2 <span class="token comment" spellcheck="true">#账号2</span>
-user2@2018 <span class="token comment" spellcheck="true">#账号2密码</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在此目录下，生成虚拟用户口令认证的db文件，这是本地数据库文件：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /home/ftp/config
-db_load -T -t <span class="token function">hash</span> -f vuser_passwd.txt vuser_passwd.db
-<span class="token function">chmod</span> 600 vuser_passwd.db <span class="token comment" spellcheck="true">#安全起见，将该文件的权限设置为root读写</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>同时在该目录下，新建<code>chroot_list</code>文件，即<code>/etc/vsftpd/vsftpd.conf</code>中的<code>chroot_list_file=</code>，并将虚拟账户的账号放在这个文件中。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> chroot_list
-user1
-user2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>然后新建<code>vuser_conf</code>目录，即<code>/etc/vsftpd/vsftpd.conf</code>中的<code>user_config_dir=</code>。用于存放每个虚拟账户的配置文件，虚拟账户的配置文件以虚拟账户的用户名命名。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> vuser_conf
-vim user1
-<span class="token comment" spellcheck="true"># 配置如下：</span>
-local_root<span class="token operator">=</span>/home/ftp/data/user1 <span class="token comment" spellcheck="true">#目录需已经存在，拥有者需为/etc/vsftpd/vsftpd.conf 中guest_username指定的用户</span>
-write_enable<span class="token operator">=</span>YES
-anon_umask<span class="token operator">=</span>022
-anon_world_readable_only<span class="token operator">=</span>NO
-anon_upload_enable<span class="token operator">=</span>YES
-anon_mkdir_write_enable<span class="token operator">=</span>YES
-anon_other_write_enable<span class="token operator">=</span>YES<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>以上配置有修改，不需要重启vsftpd，即时生效</strong>。</p>
-<h3 id="PAM认证"><a href="#PAM认证" class="headerlink" title="PAM认证"></a>PAM认证</h3><p>修改<code>/etc/pam.d/vsftpd</code>文件，注释掉原来的内容，在最后两行添加认证文件路径，如下所示：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#%PAM-1.0</span>
-<span class="token comment" spellcheck="true">#session    optional     pam_keyinit.so    force revoke</span>
-<span class="token comment" spellcheck="true">#auth       required    pam_listfile.so item=user sense=deny file=/etc/vsftpd/ftpusers onerr=succeed</span>
-<span class="token comment" spellcheck="true">#auth       required    pam_shells.so</span>
-<span class="token comment" spellcheck="true">#auth       include    password-auth</span>
-<span class="token comment" spellcheck="true">#account    include    password-auth</span>
-<span class="token comment" spellcheck="true">#session    required     pam_loginuid.so</span>
-<span class="token comment" spellcheck="true">#session    include    password-auth</span>
-auth    required    /lib64/security/pam_userdb.so    db<span class="token operator">=</span>/home/ftp/config/vuser_passwd
-account required    /lib64/security/pam_userdb.so db<span class="token operator">=</span>/home/ftp/config/vuser_passwd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>中间使用<code>Tab</code>键分隔。</p>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><pre class="line-numbers language-bash"><code class="language-bash">systemctl start vsftpd <span class="token comment" spellcheck="true">#启动</span>
-systemctl restart vsftpd <span class="token comment" spellcheck="true">#重启</span>
-systemctl stop vsftpd <span class="token comment" spellcheck="true">#停止</span>
-systemctl status vsftpd <span class="token comment" spellcheck="true">#查看状态</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h2><p>写了<code>3</code>个小脚本来管理。</p>
-<h3 id="新增用户"><a href="#新增用户" class="headerlink" title="新增用户"></a>新增用户</h3><pre class="line-numbers language-bash"><code class="language-bash">sh /home/ftp/script/setFTP.sh <span class="token operator">&lt;</span>user<span class="token operator">></span> <span class="token operator">&lt;</span>passwd<span class="token operator">></span> <span class="token operator">&lt;</span>path<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>代码如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
-
-user<span class="token operator">=</span><span class="token variable">$1</span>
-passwd<span class="token operator">=</span><span class="token variable">$2</span>
-path<span class="token operator">=</span><span class="token variable">$3</span>
-
-<span class="token keyword">echo</span> <span class="token variable">$user</span> <span class="token operator">>></span> /home/ftp/config/chroot_list
-<span class="token keyword">echo</span> -e <span class="token string">"<span class="token variable">$user</span>\n<span class="token variable">$passwd</span>"</span> <span class="token operator">>></span> /home/ftp/config/vuser_passwd.txt
-db_load -T -t <span class="token function">hash</span> -f /home/ftp/config/vuser_passwd.txt /home/ftp/config/vuser_passwd.db
-
-<span class="token function">mkdir</span> <span class="token variable">$path</span>
-<span class="token function">chown</span> -R chenxj:chenxj <span class="token variable">$path</span>
-<span class="token function">chmod</span> 700 <span class="token variable">$path</span>
-
-<span class="token keyword">echo</span> -e <span class="token string">"local_root=<span class="token variable">$path</span>\nwrite_enable=YES\nanon_world_readable_only=NO\nanon_upload_enable=YES\nanon_mkdir_write_enable=YES\nanon_other_write_enable=YES"</span> <span class="token operator">></span> /home/ftp/config/vuser_conf/<span class="token variable">$user</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="取消和恢复"><a href="#取消和恢复" class="headerlink" title="取消和恢复"></a>取消和恢复</h3><p>如果希望某个路径关闭FTP，则直接修改其权限为<code>600</code>即可，则在配置文件中<code>local_root</code>指定为该路径的账号全都无法登陆。同理，恢复则将权限修改为<code>700</code>：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">sh /home/ftp/script/cancelFTP.sh <span class="token operator">&lt;</span>path<span class="token operator">></span> <span class="token comment" spellcheck="true">#chmod 600 $path</span>
-sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<span class="token operator">></span> <span class="token comment" spellcheck="true">#chmod 700 $path</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="UMI是什么"><a href="#UMI是什么" class="headerlink" title="UMI是什么"></a>UMI是什么</h2><p><strong>UMI</strong>全称：<em>Unique Molecular Identifiers</em>。<br>又称分子条形码技术，是对原始样本基因组打断后的每一个片段都加上一段特有的标签序列，用于区分同一样本中成千上万的不同的片段，在后续的数据分析中可以通过这些标签序列来排除由于 <strong>DNA</strong> 聚合酶和扩增以及测序过程中所引入的错误。分子条形码通常由大约 <code>10nt</code> 左右的随机序列（比如 NNNNNNN)，或者简并碱基（NNNRNYN）组成。<br>有别于样品标签（<code>sample index</code> 或 <code>sample barcode</code>），分子条形码是针对同一个样本中的不同片段加上的标签序列，而样品标签是用于区分不同样本而加上的标签序列。<br>因此，每一个样本只能有一个相同的样品标签，但可以有成千上万的分子条形码。</p>
+<p><strong>UMI是给同一个样本的不同片段打上标签</strong></p>
+<h2 id="UMI加在哪里？"><a href="#UMI加在哪里？" class="headerlink" title="UMI加在哪里？"></a>UMI加在哪里？</h2><p>双端<code>index</code>，如果一端的<code>index</code>已经可以区分不同的样本。则另一端<code>index</code>的位置上可以用<code>UMI</code>来代替。即<code>UMI</code>在<code>index</code>的位置上。<code>UMI</code>的长度与<code>index</code>相同。</p>
+<p><code>UMI</code>也可以加在插入片段中，在<code>index</code>和<code>UMI</code>之间可能需要连接酶链接。在我们的某个项目中，<code>UMI</code>就是加在插入片段中，<code>index</code>和<code>UMI</code>之间有<code>8bp</code>的酶切位点。</p>
+<h2 id="UMI如何处理？"><a href="#UMI如何处理？" class="headerlink" title="UMI如何处理？"></a>UMI如何处理？</h2><p>使用<code>fastp</code>和<code>gencore</code>软件可以很方便的处理<code>UMI</code>。</p>
+<h3 id="标记UMI"><a href="#标记UMI" class="headerlink" title="标记UMI"></a>标记UMI</h3><p>使用<code>fastp</code>标记<code>reads</code>上的<code>UMI</code>序列</p>
+<pre class="line-numbers language-bash"><code class="language-bash">fastp -i R1.fq -o out.R1.fq -U --umi_loc<span class="token operator">=</span>read1 --umi_len<span class="token operator">=</span>8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>--umi_loc</code>指定<code>UMI</code>的位置，如果是在<code>reads</code>上，则还需要指定<code>UMI</code>的长度。</p>
+<p><a href="https://github.com/OpenGene/fastp" target="_blank" rel="noopener">FASTP用法</a></p>
+<h3 id="得到一致性序列"><a href="#得到一致性序列" class="headerlink" title="得到一致性序列"></a>得到一致性序列</h3><p>使用<code>gencore</code>的可以得到一致性序列</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gencore -i in.bam -o out.bam -r hg19.fa -s 3 --umi_prefix<span class="token operator">=</span>UMI --ratio_threshold<span class="token operator">=</span>0.9 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
             </div>
             <hr />
@@ -752,11 +644,11 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《vsftpd安装配置说明》
+                    《UMI简介》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/28/UMI简介/" property="cc:attributionName"
                rel="cc:attributionURL">
-                chenxj
+                YTer
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -795,7 +687,7 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
         repo: 'chenxj1101.github.io',
         owner: 'chenxj1101',
         admin: "chenxj1101",
-        id: '2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/',
+        id: '2019/07/28/UMI简介/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -816,12 +708,11 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/">
+                <a href="/2019/08/29/vsftpd安装配置说明/">
                     <div class="card-image">
                         
                         
@@ -837,9 +728,9 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-29
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-29
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -852,7 +743,6 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -879,24 +769,24 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/28/umi-jian-jie/">
+                <a href="/2018/10/15/重复序列注释软件REPET/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="UMI简介">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="重复序列注释软件REPET">
                         
-                        <span class="card-title">UMI简介</span>
+                        <span class="card-title">重复序列注释软件REPET</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            对`UMI`的做个简单总结
+                            REPET详细说明
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
                             </span>
                         <span class="publish-author">
                             
@@ -917,12 +807,12 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
                         <span class="chip bg-color">bioinformatics</span>
                     </a>
                     
-                    <a href="/tags/UMI/" target="_blank">
-                        <span class="chip bg-color">UMI</span>
+                    <a href="/tags/REPET/" target="_blank">
+                        <span class="chip bg-color">REPET</span>
                     </a>
                     
-                    <a href="/tags/NGS/" target="_blank">
-                        <span class="chip bg-color">NGS</span>
+                    <a href="/tags/科研/" target="_blank">
+                        <span class="chip bg-color">科研</span>
                     </a>
                     
                 </div>
@@ -963,7 +853,7 @@ sh /home/ftp/script/recoverFTP.sh <span class="token operator">&lt;</span>path<s
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: 山海之间<br />'
-            + '作者: chenxj<br />'
+            + '作者: YTer<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 

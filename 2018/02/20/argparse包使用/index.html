@@ -4,12 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="PureCN测试, code bioinformatics">
+    <meta name="keywords" content="argparse包使用, code bioinformatics">
     <meta name="baidu-site-verification" content="upBb6uT01u">
     <meta name="google-site-verification" content="ZUIsMfD3SZEHDz8v4nPW-lm13IBmpOp_vyC-G3jATS8">
-    <meta name="description" content="PureCN测试测试环境R version 3.4.3 (2017-11-30)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: CentOS release 6.5 (Final">
+    <meta name="description" content="Argparse简介argparse是python自带的一个命令行解析包，非常适合编写可读性好的命令行程序。要使用的话，直接导入即可，无需另外安装。
+实例新建一个 parse.py文件如下：
+# !/usr/bin/python
+# -*-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@ Running under: CentOS release 6.5 (Final">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>PureCN测试 | 山海之间</title>
+    <title>argparse包使用 | 山海之间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -291,13 +292,13 @@ Running under: CentOS release 6.5 (Final">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        PureCN测试
+                        argparse包使用
                     </div>
                 </div>
             </div>
@@ -408,16 +409,16 @@ Running under: CentOS release 6.5 (Final">
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/R语言/" target="_blank">
-                            <span class="chip bg-color">R语言</span>
+                        <a href="/tags/Python/" target="_blank">
+                            <span class="chip bg-color">Python</span>
                         </a>
                         
-                        <a href="/tags/bioinformatics/" target="_blank">
-                            <span class="chip bg-color">bioinformatics</span>
+                        <a href="/tags/argparse/" target="_blank">
+                            <span class="chip bg-color">argparse</span>
                         </a>
                         
-                        <a href="/tags/tumor/" target="_blank">
-                            <span class="chip bg-color">tumor</span>
+                        <a href="/tags/CLI/" target="_blank">
+                            <span class="chip bg-color">CLI</span>
                         </a>
                         
                     </div>
@@ -428,8 +429,8 @@ Running under: CentOS release 6.5 (Final">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/生信/" class="post-category" target="_blank">
-                            生信
+                        <a href="/categories/编程/" class="post-category" target="_blank">
+                            编程
                         </a>
                         
                     </div>
@@ -440,13 +441,13 @@ Running under: CentOS release 6.5 (Final">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-02-23
+                    2018-02-20
                 </div>
 
                 <div class="post-author info-break-policy">
                     <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
                     
-                    chenxj
+                    YTer
                     
                 </div>
 
@@ -454,14 +455,14 @@ Running under: CentOS release 6.5 (Final">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    319
+                    809
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
                 
@@ -477,66 +478,95 @@ Running under: CentOS release 6.5 (Final">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="PureCN测试"><a href="#PureCN测试" class="headerlink" title="PureCN测试"></a>PureCN测试</h1><h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><pre class="line-numbers language-bash"><code class="language-bash">R version 3.4.3 <span class="token punctuation">(</span>2017-11-30<span class="token punctuation">)</span>
-Platform: x86_64-pc-linux-gnu <span class="token punctuation">(</span>64-bit<span class="token punctuation">)</span>
-Running under: CentOS release 6.5 <span class="token punctuation">(</span>Final<span class="token punctuation">)</span>
+                <h2 id="Argparse简介"><a href="#Argparse简介" class="headerlink" title="Argparse简介"></a>Argparse简介</h2><p>argparse是python自带的一个命令行解析包，非常适合编写可读性好的命令行程序。<br>要使用的话，直接导入即可，无需另外安装。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>新建一个 <code>parse.py</code>文件如下：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># !/usr/bin/python</span>
+<span class="token comment" spellcheck="true"># -*- coding: UTF-8 -*-</span>
 
-Matrix products: default
-BLAS: /p299/user/og06/chenxiangjian1609/software/R/lib64/R/lib/libRblas.so
-LAPACK: /p299/user/og06/chenxiangjian1609/software/R/lib64/R/lib/libRlapack.so
+<span class="token keyword">import</span> argparse
 
-R_path: /p299/user/og06/chenxiangjian1609/software/R/bin/R
-Rscript_path: /p299/user/og06/chenxiangjian1609/software/R/bin/Rscript
-PureCN.R_path: /p299/user/og06/chenxiangjian1609/software/miniconda3/lib/R/library/PureCN/
+<span class="token comment" spellcheck="true"># get parameters</span>
+<span class="token keyword">def</span> <span class="token function">parse_args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-测试路径： /p299/user/og06/chenxiangjian1609/dev/cnv/test2/pure/test_1206/third<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h2><ul>
-<li>reference.fa: 基因组文件</li>
-<li>panel9b.bed： 捕获区域panel文件</li>
-<li>OG165910035T1CFD20kx9b1_mutect.vcf： Mutect软件生成的VCF文件</li>
-<li>OG165910035T1CFD20kx9b1.csv： CNVkit生成的cns文件转换成SNP6格式的文件。即6列，分别是Sample，chrom，start，end，probes，log2(seg_mean)</li>
-</ul>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="step1-Generate-an-interval-file-from-a-BED-file-containing-target-coordinates"><a href="#step1-Generate-an-interval-file-from-a-BED-file-containing-target-coordinates" class="headerlink" title="step1 Generate an interval file from a BED file containing target coordinates"></a>step1 Generate an interval file from a BED file containing target coordinates</h3><pre class="line-numbers language-bash"><code class="language-bash">/p299/user/og06/chenxiangjian1609/software/R/bin/Rscript \
-/p299/user/og06/chenxiangjian1609/software/miniconda3/lib/R/library/PureCN/extdata/IntervalFile.R \
---infile panel9b.bed --fasta reference.fa --outfile baits_hg19_gcgene2.txt --genome hg19 --offtarget<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>生成的<strong>baits_hg19_gcgene2.txt</strong>用于下一步</p>
-<h3 id="step2-determine-purity-and-ploidy"><a href="#step2-determine-purity-and-ploidy" class="headerlink" title="step2 determine purity and ploidy"></a>step2 determine purity and ploidy</h3><pre class="line-numbers language-bash"><code class="language-bash">/p299/user/og06/chenxiangjian1609/software/R/bin/Rscript \
-/p299/user/og06/chenxiangjian1609/software/miniconda3/lib/R/library/PureCN/extdata/PureCN.R \
---out result2 --sampleid OG165910035T1CFD20kx9b1 --segfile OG165910035T1CFD20kx9b1.csv --vcf \
-OG165910035T1CFD20kx9b1_mutect.vcf --genome hg19 --gcgene baits_hg19_gcgene2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>生成的结果文件如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">result2_segmentation.pdf
-result2.rds
-result2.log
-result2.csv
-result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在csv结果文件中可见tumor样本的纯度和倍性，如下表所示</p>
-<table>
-<thead>
-<tr>
-<th>Sampleid</th>
-<th>Purity</th>
-<th>Ploidy</th>
-<th>Sex</th>
-<th>Contamination</th>
-<th>Flagged</th>
-<th>Failed</th>
-<th>Curated</th>
-<th>Comment</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>OG165910035T1CFD20kx9b1</td>
-<td>0.22</td>
-<td>1.336</td>
-<td>？</td>
-<td>0</td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>RARE KARYOTYPE;LOW PURITY</td>
-</tr>
-</tbody></table>
+    description <span class="token operator">=</span> u<span class="token string">"扫描给定项目路径，生成路径下数据信息"</span>
+
+    parse <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span>description<span class="token punctuation">)</span>
+
+    help <span class="token operator">=</span> u<span class="token string">"输出文件名称"</span>
+    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+
+    help <span class="token operator">=</span> u<span class="token string">"已记录好的总表，如不存在可用'-'代替"</span>
+    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'backup'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+
+    help <span class="token operator">=</span> u<span class="token string">"需要扫描的项目目录,可输入多个"</span>
+    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'filepath'</span><span class="token punctuation">,</span> nargs<span class="token operator">=</span><span class="token string">'*'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+
+    help <span class="token operator">=</span> u<span class="token string">"项目名称"</span>
+    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-p'</span><span class="token punctuation">,</span><span class="token string">'--project'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+
+    help <span class="token operator">=</span> u<span class="token string">"数据类型, 默认值为: FASTQ"</span>
+    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-t'</span><span class="token punctuation">,</span><span class="token string">'--type'</span><span class="token punctuation">,</span>default<span class="token operator">=</span><span class="token string">'FASTQ'</span> <span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+
+    help <span class="token operator">=</span> u<span class="token string">"测序平台, 默认值为: Illumina"</span>
+    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'--cexu'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'Illumina'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+
+    help <span class="token operator">=</span> u<span class="token string">"文库大小, 数据类型:int(整数型)"</span>
+    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-l'</span><span class="token punctuation">,</span> <span class="token string">'--library'</span><span class="token punctuation">,</span>  type<span class="token operator">=</span>int<span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+
+    args <span class="token operator">=</span> parse<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> args
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+
+    args <span class="token operator">=</span> parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    output <span class="token operator">=</span> args<span class="token punctuation">.</span>output
+    backup <span class="token operator">=</span> args<span class="token punctuation">.</span>backup
+    filepath <span class="token operator">=</span> args<span class="token punctuation">.</span>filepath
+    project <span class="token operator">=</span> args<span class="token punctuation">.</span>project
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行 <code>python parse.py -h</code> </p>
+<pre class="line-numbers language-bash"><code class="language-bash">usage: scanData.py <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PROJECT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-c CEXU<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LIBRARY<span class="token punctuation">]</span>
+                   output backup <span class="token punctuation">[</span>filepath <span class="token punctuation">[</span>filepath <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+扫描给定项目路径，生成路径下数据信息
+
+positional arguments:
+  output                输出文件名称
+  backup                已记录好的总表，如不存在可用<span class="token string">'-'</span>代替
+  filepath              需要扫描的项目目录,可输入多个
+
+optional arguments:
+  -h, --help            show this <span class="token function">help</span> message and <span class="token keyword">exit</span>
+  -p PROJECT, --project PROJECT
+                        项目名称
+  -t TYPE, --type TYPE  数据类型, 默认值为: FASTQ
+  -c CEXU, --cexu CEXU  测序平台, 默认值为: Illumina
+  -l LIBRARY, --library LIBRARY
+                        文库大小, 数据类型:int<span class="token punctuation">(</span>整数型<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以看到帮助信息是由argparse包自动生成的。且帮助信息是可以自己定义的。</p>
+<h2 id="定位参数"><a href="#定位参数" class="headerlink" title="定位参数"></a>定位参数</h2><p>在上述程序中，<code>output</code>, <code>backup</code>, <code>filpath</code>这3个参数在帮助信息中是<code>positional arguments</code>，中文意思就是<code>定位参数</code>，用法是不用带<code>-</code>就能使用。顾名思义，这些参数的位置是固定的，前后顺序是无法更换的，且这些参数是必选的，不全的话就会报错。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">python scanData.py test.txt
+usage: scanData.py <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PROJECT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-c CEXU<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LIBRARY<span class="token punctuation">]</span>
+                   output backup <span class="token punctuation">[</span>filepath <span class="token punctuation">[</span>filepath <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
+scanData.py: error: too few arguments<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><p>上述程序中的其他参数，在帮助信息中显示是<code>optional arguments</code>， 意思是可选参数。可以使用<code>-</code>来指定短参数，也可以使用<code>--</code>来表示长参数。可选参数是<code>非必选</code>的，可用可不用。而且顺序是可以随意更换的。</p>
+<h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p>在<code>argparse</code>中可以对参数的<code>数据类型、默认值、可选值、帮助信息</code>等进行设置。</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># !/usr/bin/python</span>
+<span class="token comment" spellcheck="true"># -*- coding: UTF-8 -*-</span>
+
+<span class="token keyword">import</span> argparse
+
+parse <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+help <span class="token operator">=</span> u<span class="token string">"文库大小, 数据类型:int(整数型)"</span>
+parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-l'</span><span class="token punctuation">,</span> <span class="token string">'--library'</span><span class="token punctuation">,</span>  type<span class="token operator">=</span>int<span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">150</span><span class="token punctuation">,</span> choice<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">150</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+args <span class="token operator">=</span> parse<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在<code>add_argument</code>方法中，<code>type</code>指定数据类型，<code>default</code>指定默认值，<code>choice</code>指定可选值， <code>help</code>指定自定义帮助信息。<code>nargs</code>可以指定参数的数量，值可以为正整数，也可以为<code>*</code>表示<code>任意个数，可以为0个</code>， 还可以为<code>+</code>，代表<code>1或1以上的个数</code>。</p>
+<p>在上述的<code>parse.py</code>中，<code>filepath</code>这个参数的个数就是不固定的，可以传入多个参数。参数解析之后，得到的是一个数组。</p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener">Argparse文档</a></p>
 
             </div>
             <hr />
@@ -695,11 +725,11 @@ result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《PureCN测试》
+                    《argparse包使用》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/02/23/purecn-ce-shi/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/02/20/argparse包使用/" property="cc:attributionName"
                rel="cc:attributionURL">
-                chenxj
+                YTer
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -738,7 +768,7 @@ result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span
         repo: 'chenxj1101.github.io',
         owner: 'chenxj1101',
         admin: "chenxj1101",
-        id: '2018/02/23/purecn-ce-shi/',
+        id: '2018/02/20/argparse包使用/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -763,24 +793,24 @@ result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/03/25/pyclone-an-zhuang-ce-shi/">
+                <a href="/2018/02/23/PureCN测试/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="Pyclone安装测试">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="PureCN测试">
                         
-                        <span class="card-title">Pyclone安装测试</span>
+                        <span class="card-title">PureCN测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Pyclone分析肿瘤克隆进化
+                            PureCN计算肿瘤细胞纯度
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-03-25
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-23
                         </span>
                         <span class="publish-author">
                             
@@ -797,16 +827,16 @@ result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/R语言/" target="_blank">
+                        <span class="chip bg-color">R语言</span>
+                    </a>
+                    
                     <a href="/tags/bioinformatics/" target="_blank">
                         <span class="chip bg-color">bioinformatics</span>
                     </a>
                     
                     <a href="/tags/tumor/" target="_blank">
                         <span class="chip bg-color">tumor</span>
-                    </a>
-                    
-                    <a href="/tags/Pyclone/" target="_blank">
-                        <span class="chip bg-color">Pyclone</span>
                     </a>
                     
                 </div>
@@ -817,10 +847,10 @@ result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/2018/02/20/argparse-bao-shi-yong/">
+                <a href="/2018/02/20/argparse包使用/">
                     <div class="card-image">
                         
                         
@@ -851,6 +881,7 @@ result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -904,7 +935,7 @@ result2.pdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: 山海之间<br />'
-            + '作者: chenxj<br />'
+            + '作者: YTer<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 

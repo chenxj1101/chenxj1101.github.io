@@ -4,13 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="argparse包使用, code bioinformatics">
+    <meta name="keywords" content="python提取GFF3文件信息, code bioinformatics">
     <meta name="baidu-site-verification" content="upBb6uT01u">
     <meta name="google-site-verification" content="ZUIsMfD3SZEHDz8v4nPW-lm13IBmpOp_vyC-G3jATS8">
-    <meta name="description" content="Argparse简介argparse是python自带的一个命令行解析包，非常适合编写可读性好的命令行程序。要使用的话，直接导入即可，无需另外安装。
-实例新建一个 parse.py文件如下：
-# !/usr/bin/python
-# -*-">
+    <meta name="description" content="GFF3文件想要从GFF3文件中提取的信息为重复序列的种类，数量，以及bp数。GFF3文件分为9列，这次用到是第2、4、5、9列，分别代表来源，序列起始位置，结束位置，以及属性。重复序列的种类可以从第9列属性中提取，bp数以（结束位置-起始">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>argparse包使用 | 山海之间</title>
+    <title>python提取GFF3文件信息 | 山海之间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +289,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        argparse包使用
+                        python提取GFF3文件信息
                     </div>
                 </div>
             </div>
@@ -409,16 +406,16 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Python/" target="_blank">
-                            <span class="chip bg-color">Python</span>
+                        <a href="/tags/bioinformatics/" target="_blank">
+                            <span class="chip bg-color">bioinformatics</span>
                         </a>
                         
-                        <a href="/tags/argparse/" target="_blank">
-                            <span class="chip bg-color">argparse</span>
+                        <a href="/tags/gff/" target="_blank">
+                            <span class="chip bg-color">gff</span>
                         </a>
                         
-                        <a href="/tags/CLI/" target="_blank">
-                            <span class="chip bg-color">CLI</span>
+                        <a href="/tags/gene/" target="_blank">
+                            <span class="chip bg-color">gene</span>
                         </a>
                         
                     </div>
@@ -429,8 +426,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/编程/" class="post-category" target="_blank">
-                            编程
+                        <a href="/categories/生信/" class="post-category" target="_blank">
+                            生信
                         </a>
                         
                     </div>
@@ -441,13 +438,13 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-02-20
+                    2018-04-12
                 </div>
 
                 <div class="post-author info-break-policy">
                     <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
                     
-                    chenxj
+                    YTer
                     
                 </div>
 
@@ -455,14 +452,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    809
+                    986
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
                 
@@ -478,95 +475,121 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Argparse简介"><a href="#Argparse简介" class="headerlink" title="Argparse简介"></a>Argparse简介</h2><p>argparse是python自带的一个命令行解析包，非常适合编写可读性好的命令行程序。<br>要使用的话，直接导入即可，无需另外安装。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>新建一个 <code>parse.py</code>文件如下：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># !/usr/bin/python</span>
-<span class="token comment" spellcheck="true"># -*- coding: UTF-8 -*-</span>
+                <h2 id="GFF3文件"><a href="#GFF3文件" class="headerlink" title="GFF3文件"></a>GFF3文件</h2><p>想要从GFF3文件中提取的信息为重复序列的种类，数量，以及bp数。<br>GFF3文件分为9列，这次用到是第2、4、5、9列，分别代表来源，序列起始位置，结束位置，以及属性。<br>重复序列的种类可以从第9列属性中提取，bp数以（结束位置-起始位置+1）进行计算，数量则在过程中统计。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>按行读入GFF3文件，以”<strong>\t</strong>“符号分解。首先通过第2列，判断来源，有3种来源：  </p>
+<ol>
+<li>TEs</li>
+<li>SSRs</li>
+<li>blastx or tblasts</li>
+</ol>
+<p>不同的来源，后缀不同，通过判断相应的字符串是否在第2列字符串中来判断是哪种来源。再通过第9列属性字符串，判断相应的分类代码字符串是否在其中，如果在其中，则将分类代码放入一个列表，然后以分类代码为键，bp数为值生成字典。<br>for循环不断读入，列表增长，字典合并，最后将列表唯一化，通过Counter类生成相应的字典，这个字典的值就是各分类的数量。  </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>生成字典是通过事先定义一个函数的方式实现的：  </p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">return_TEs</span><span class="token punctuation">(</span>lines<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    TEs<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'RYX'</span><span class="token punctuation">,</span> <span class="token string">'RXX-LARD'</span><span class="token punctuation">,</span> <span class="token string">'RIX'</span><span class="token punctuation">,</span> <span class="token string">'RLX'</span><span class="token punctuation">,</span> <span class="token string">'RPX'</span><span class="token punctuation">,</span> <span class="token string">'RSX'</span><span class="token punctuation">,</span> <span class="token string">'RXX-TRIM'</span><span class="token punctuation">,</span> <span class="token string">'DYX'</span><span class="token punctuation">,</span> <span class="token string">'DHX'</span><span class="token punctuation">,</span>
+    <span class="token string">'DXX-MITE'</span><span class="token punctuation">,</span> <span class="token string">'DMX'</span><span class="token punctuation">,</span> <span class="token string">'DTX'</span><span class="token punctuation">,</span> <span class="token string">'RXX-chim'</span><span class="token punctuation">,</span> <span class="token string">'DXX-chim'</span><span class="token punctuation">,</span> <span class="token string">'noCat'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>seqid<span class="token punctuation">,</span> source<span class="token punctuation">,</span> seqtype<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">,</span> score<span class="token punctuation">,</span> strand<span class="token punctuation">,</span> phase<span class="token punctuation">,</span> attributes<span class="token punctuation">)</span> <span class="token operator">=</span>\
+    lines<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
+    te_len <span class="token operator">=</span> int<span class="token punctuation">(</span>end<span class="token punctuation">)</span> <span class="token operator">-</span> int<span class="token punctuation">(</span>start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> te <span class="token keyword">in</span> TEs<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> te <span class="token keyword">in</span> attributes<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>te<span class="token punctuation">:</span>te_len<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>字典合并的函数：  </p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#字典合并的函数，即相同的键的值进行相加</span>
+<span class="token keyword">def</span> <span class="token function">union_dict</span><span class="token punctuation">(</span><span class="token operator">*</span>objs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    _keys <span class="token operator">=</span> set<span class="token punctuation">(</span>sum<span class="token punctuation">(</span><span class="token punctuation">[</span>obj<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> obj <span class="token keyword">in</span> objs<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    _total <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> _key <span class="token keyword">in</span> _keys<span class="token punctuation">:</span>
+        _total<span class="token punctuation">[</span>_key<span class="token punctuation">]</span> <span class="token operator">=</span> sum<span class="token punctuation">(</span><span class="token punctuation">[</span>obj<span class="token punctuation">.</span>get<span class="token punctuation">(</span>_key<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">for</span> obj <span class="token keyword">in</span> objs<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> _total
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>附上完整代码：  </p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python</span>
+<span class="token comment" spellcheck="true">#-*- coding: utf-8 -*-</span>
 
-<span class="token keyword">import</span> argparse
+<span class="token triple-quoted-string string">"""
+根据REPET输出的GFF3文件统计重复序列的信息
+"""</span>
 
-<span class="token comment" spellcheck="true"># get parameters</span>
-<span class="token keyword">def</span> <span class="token function">parse_args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">import</span> os
+<span class="token keyword">from</span> collections <span class="token keyword">import</span> Counter
+<span class="token comment" spellcheck="true">#使用字典返回TEdenovo的结果</span>
+<span class="token keyword">def</span> <span class="token function">return_TEs</span><span class="token punctuation">(</span>lines<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    TEs<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'RYX'</span><span class="token punctuation">,</span> <span class="token string">'RXX-LARD'</span><span class="token punctuation">,</span> <span class="token string">'RIX'</span><span class="token punctuation">,</span> <span class="token string">'RLX'</span><span class="token punctuation">,</span> <span class="token string">'RPX'</span><span class="token punctuation">,</span> <span class="token string">'RSX'</span><span class="token punctuation">,</span> <span class="token string">'RXX-TRIM'</span><span class="token punctuation">,</span> <span class="token string">'DYX'</span><span class="token punctuation">,</span> <span class="token string">'DHX'</span><span class="token punctuation">,</span>
+    <span class="token string">'DXX-MITE'</span><span class="token punctuation">,</span> <span class="token string">'DMX'</span><span class="token punctuation">,</span> <span class="token string">'DTX'</span><span class="token punctuation">,</span> <span class="token string">'RXX-chim'</span><span class="token punctuation">,</span> <span class="token string">'DXX-chim'</span><span class="token punctuation">,</span> <span class="token string">'noCat'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>seqid<span class="token punctuation">,</span> source<span class="token punctuation">,</span> seqtype<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">,</span> score<span class="token punctuation">,</span> strand<span class="token punctuation">,</span> phase<span class="token punctuation">,</span> attributes<span class="token punctuation">)</span> <span class="token operator">=</span>\
+    lines<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
+    te_len <span class="token operator">=</span> int<span class="token punctuation">(</span>end<span class="token punctuation">)</span> <span class="token operator">-</span> int<span class="token punctuation">(</span>start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> te <span class="token keyword">in</span> TEs<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> te <span class="token keyword">in</span> attributes<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>te<span class="token punctuation">:</span>te_len<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">#使用字典返回SSR的结果</span>
+<span class="token keyword">def</span> <span class="token function">return_SSRs</span><span class="token punctuation">(</span>lines<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>seqid<span class="token punctuation">,</span> source<span class="token punctuation">,</span> seqtype<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">,</span> score<span class="token punctuation">,</span> strand<span class="token punctuation">,</span> phase<span class="token punctuation">,</span> attributes<span class="token punctuation">)</span> <span class="token operator">=</span>\
+    lines<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
+    ssr_len <span class="token operator">=</span> int<span class="token punctuation">(</span>end<span class="token punctuation">)</span> <span class="token operator">-</span> int<span class="token punctuation">(</span>start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'SSR'</span><span class="token punctuation">,</span> ssr_len<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">#使用字典返回blastx和tblastx的结果</span>
+<span class="token keyword">def</span> <span class="token function">return_Blast</span><span class="token punctuation">(</span>lines<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    blsat_te<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'TRIM'</span><span class="token punctuation">:</span><span class="token string">'RXX-TRIM'</span><span class="token punctuation">,</span> <span class="token string">'LTR'</span><span class="token punctuation">:</span><span class="token string">'RLX'</span><span class="token punctuation">,</span> <span class="token string">'MITE'</span><span class="token punctuation">:</span><span class="token string">'DXX-MITE'</span><span class="token punctuation">,</span> <span class="token string">'Crypton'</span><span class="token punctuation">:</span><span class="token string">'DYX'</span><span class="token punctuation">,</span>
+    <span class="token string">'TIR'</span><span class="token punctuation">:</span><span class="token string">'DTX'</span><span class="token punctuation">,</span> <span class="token string">'Helitron'</span><span class="token punctuation">:</span><span class="token string">'DHX'</span><span class="token punctuation">,</span> <span class="token string">'PLE'</span><span class="token punctuation">:</span><span class="token string">'RPX'</span><span class="token punctuation">,</span> <span class="token string">'DIRS'</span><span class="token punctuation">:</span><span class="token string">'RYX'</span><span class="token punctuation">,</span> <span class="token string">'LINE'</span><span class="token punctuation">:</span><span class="token string">'RIX'</span><span class="token punctuation">,</span>
+    <span class="token string">'SINE'</span><span class="token punctuation">:</span><span class="token string">'RSX'</span><span class="token punctuation">,</span> <span class="token string">'Maverick'</span><span class="token punctuation">:</span><span class="token string">'DMX'</span><span class="token punctuation">,</span> <span class="token string">'ClassI:?'</span><span class="token punctuation">:</span><span class="token string">'RXX-chim'</span><span class="token punctuation">,</span> <span class="token string">'ClassII:?'</span><span class="token punctuation">:</span><span class="token string">'DXX-chim'</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">#通过字典将REPET中的分类代码与RepBase的分类代码对应起来</span>
+    <span class="token punctuation">(</span>seqid<span class="token punctuation">,</span> source<span class="token punctuation">,</span> seqtype<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">,</span> score<span class="token punctuation">,</span> strand<span class="token punctuation">,</span> phase<span class="token punctuation">,</span> attributes<span class="token punctuation">)</span> <span class="token operator">=</span>\
+    lines<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
+    blast_len <span class="token operator">=</span> int<span class="token punctuation">(</span>end<span class="token punctuation">)</span> <span class="token operator">-</span> int<span class="token punctuation">(</span>start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> te <span class="token keyword">in</span> blsat_te<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> te <span class="token keyword">in</span> attributes<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>blsat_te<span class="token punctuation">[</span>te<span class="token punctuation">]</span><span class="token punctuation">:</span>blast_len<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">#字典合并的函数，即相同的键的值进行相加</span>
+<span class="token keyword">def</span> <span class="token function">union_dict</span><span class="token punctuation">(</span><span class="token operator">*</span>objs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    _keys <span class="token operator">=</span> set<span class="token punctuation">(</span>sum<span class="token punctuation">(</span><span class="token punctuation">[</span>obj<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> obj <span class="token keyword">in</span> objs<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    _total <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> _key <span class="token keyword">in</span> _keys<span class="token punctuation">:</span>
+        _total<span class="token punctuation">[</span>_key<span class="token punctuation">]</span> <span class="token operator">=</span> sum<span class="token punctuation">(</span><span class="token punctuation">[</span>obj<span class="token punctuation">.</span>get<span class="token punctuation">(</span>_key<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">for</span> obj <span class="token keyword">in</span> objs<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> _total
 
-    description <span class="token operator">=</span> u<span class="token string">"扫描给定项目路径，生成路径下数据信息"</span>
+os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string">'cat *.gff3 > genome.gff3'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#合并REPET生成的所有gff3文件</span>
+te <span class="token operator">=</span> <span class="token string">'REPET_TEs'</span>
+ssr <span class="token operator">=</span> <span class="token string">'REPET_SSRs'</span>
+blast <span class="token operator">=</span> <span class="token string">'REPET_blastx'</span>
+tblast <span class="token operator">=</span> <span class="token string">'REPET_tblastx'</span>
+genome_size<span class="token operator">=</span><span class="token number">0</span>
+ssr_num<span class="token punctuation">,</span> ssr_len<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">2</span>
+TEs<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+TEs_dict<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+Rep<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+Rep_dict<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'genome.gff3'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> gff<span class="token punctuation">:</span> <span class="token comment" spellcheck="true">#genome.gff3即前面合并后生成的文件</span>
+    <span class="token keyword">for</span> line <span class="token keyword">in</span> gff<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> line<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'##g'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+        <span class="token keyword">elif</span> line<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'##s'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token punctuation">(</span>t1<span class="token punctuation">,</span> t2<span class="token punctuation">,</span> t3<span class="token punctuation">,</span> length<span class="token punctuation">)</span> <span class="token operator">=</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span>
+            genome_size <span class="token operator">+=</span> int<span class="token punctuation">(</span>length<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#计算基因组总长度</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> te <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+                a <span class="token operator">=</span> return_TEs<span class="token punctuation">(</span>line<span class="token punctuation">)</span>
+                TEs <span class="token operator">=</span> TEs <span class="token operator">+</span> a<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#种类存入列表</span>
+                TEs_dict <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>TEs_dict<span class="token punctuation">,</span> a<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#将每一行的结果放入字典</span>
+            <span class="token keyword">if</span> ssr <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+                b <span class="token operator">=</span> return_SSRs<span class="token punctuation">(</span>line<span class="token punctuation">)</span>
+                ssr_num <span class="token operator">+=</span> <span class="token number">1</span>  <span class="token comment" spellcheck="true">#计算SSR的个数</span>
+                ssr_len <span class="token operator">+=</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">#计算SSR的总长度</span>
 
-    parse <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span>description<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> blast <span class="token keyword">in</span> line <span class="token operator">or</span> tblast <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+                c <span class="token operator">=</span> return_Blast<span class="token punctuation">(</span>line<span class="token punctuation">)</span>
+                Rep <span class="token operator">=</span> Rep <span class="token operator">+</span> c<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                Rep_dict <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>Rep_dict<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
 
-    help <span class="token operator">=</span> u<span class="token string">"输出文件名称"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"已记录好的总表，如不存在可用'-'代替"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'backup'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"需要扫描的项目目录,可输入多个"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'filepath'</span><span class="token punctuation">,</span> nargs<span class="token operator">=</span><span class="token string">'*'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"项目名称"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-p'</span><span class="token punctuation">,</span><span class="token string">'--project'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"数据类型, 默认值为: FASTQ"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-t'</span><span class="token punctuation">,</span><span class="token string">'--type'</span><span class="token punctuation">,</span>default<span class="token operator">=</span><span class="token string">'FASTQ'</span> <span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"测序平台, 默认值为: Illumina"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'--cexu'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'Illumina'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"文库大小, 数据类型:int(整数型)"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-l'</span><span class="token punctuation">,</span> <span class="token string">'--library'</span><span class="token punctuation">,</span>  type<span class="token operator">=</span>int<span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    args <span class="token operator">=</span> parse<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> args
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-
-    args <span class="token operator">=</span> parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    output <span class="token operator">=</span> args<span class="token punctuation">.</span>output
-    backup <span class="token operator">=</span> args<span class="token punctuation">.</span>backup
-    filepath <span class="token operator">=</span> args<span class="token punctuation">.</span>filepath
-    project <span class="token operator">=</span> args<span class="token punctuation">.</span>project
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>运行 <code>python parse.py -h</code> </p>
-<pre class="line-numbers language-bash"><code class="language-bash">usage: scanData.py <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PROJECT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-c CEXU<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LIBRARY<span class="token punctuation">]</span>
-                   output backup <span class="token punctuation">[</span>filepath <span class="token punctuation">[</span>filepath <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
-
-扫描给定项目路径，生成路径下数据信息
-
-positional arguments:
-  output                输出文件名称
-  backup                已记录好的总表，如不存在可用<span class="token string">'-'</span>代替
-  filepath              需要扫描的项目目录,可输入多个
-
-optional arguments:
-  -h, --help            show this <span class="token function">help</span> message and <span class="token keyword">exit</span>
-  -p PROJECT, --project PROJECT
-                        项目名称
-  -t TYPE, --type TYPE  数据类型, 默认值为: FASTQ
-  -c CEXU, --cexu CEXU  测序平台, 默认值为: Illumina
-  -l LIBRARY, --library LIBRARY
-                        文库大小, 数据类型:int<span class="token punctuation">(</span>整数型<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到帮助信息是由argparse包自动生成的。且帮助信息是可以自己定义的。</p>
-<h2 id="定位参数"><a href="#定位参数" class="headerlink" title="定位参数"></a>定位参数</h2><p>在上述程序中，<code>output</code>, <code>backup</code>, <code>filpath</code>这3个参数在帮助信息中是<code>positional arguments</code>，中文意思就是<code>定位参数</code>，用法是不用带<code>-</code>就能使用。顾名思义，这些参数的位置是固定的，前后顺序是无法更换的，且这些参数是必选的，不全的话就会报错。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">python scanData.py test.txt
-usage: scanData.py <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PROJECT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-c CEXU<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LIBRARY<span class="token punctuation">]</span>
-                   output backup <span class="token punctuation">[</span>filepath <span class="token punctuation">[</span>filepath <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
-scanData.py: error: too few arguments<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><p>上述程序中的其他参数，在帮助信息中显示是<code>optional arguments</code>， 意思是可选参数。可以使用<code>-</code>来指定短参数，也可以使用<code>--</code>来表示长参数。可选参数是<code>非必选</code>的，可用可不用。而且顺序是可以随意更换的。</p>
-<h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p>在<code>argparse</code>中可以对参数的<code>数据类型、默认值、可选值、帮助信息</code>等进行设置。</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># !/usr/bin/python</span>
-<span class="token comment" spellcheck="true"># -*- coding: UTF-8 -*-</span>
-
-<span class="token keyword">import</span> argparse
-
-parse <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-help <span class="token operator">=</span> u<span class="token string">"文库大小, 数据类型:int(整数型)"</span>
-parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-l'</span><span class="token punctuation">,</span> <span class="token string">'--library'</span><span class="token punctuation">,</span>  type<span class="token operator">=</span>int<span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">150</span><span class="token punctuation">,</span> choice<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">150</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-args <span class="token operator">=</span> parse<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在<code>add_argument</code>方法中，<code>type</code>指定数据类型，<code>default</code>指定默认值，<code>choice</code>指定可选值， <code>help</code>指定自定义帮助信息。<code>nargs</code>可以指定参数的数量，值可以为正整数，也可以为<code>*</code>表示<code>任意个数，可以为0个</code>， 还可以为<code>+</code>，代表<code>1或1以上的个数</code>。</p>
-<p>在上述的<code>parse.py</code>中，<code>filepath</code>这个参数的个数就是不固定的，可以传入多个参数。参数解析之后，得到的是一个数组。</p>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener">Argparse文档</a></p>
+zero<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'RYX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'RXX-LARD'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'RIX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'RLX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'RPX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'RSX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'RXX-TRIM'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span>
+ <span class="token string">'DYX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'DHX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'DXX-MITE'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'DMX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'DTX'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'noCat'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'RXX-chim'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'DXX-chim'</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">#创建一个包含所有类型代码的字典，然后将之前的结果与其相加，避免空值</span>
+TEs_type <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>dict<span class="token punctuation">(</span>Counter<span class="token punctuation">(</span>TEs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> zero<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 列表里的重复值唯一化，并计算重复的次数（相当于每种类型的个数)</span>
+Rep_type <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>dict<span class="token punctuation">(</span>Counter<span class="token punctuation">(</span>Rep<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> zero<span class="token punctuation">)</span>
+TEs_dict <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>TEs_dict<span class="token punctuation">,</span> zero<span class="token punctuation">)</span>
+Rep_dict <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>Rep_dict<span class="token punctuation">,</span> zero<span class="token punctuation">)</span>
+all_type <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>TEs_type<span class="token punctuation">,</span> Rep_type<span class="token punctuation">,</span> zero<span class="token punctuation">)</span>
+all_len <span class="token operator">=</span> union_dict<span class="token punctuation">(</span>TEs_dict<span class="token punctuation">,</span> Rep_dict<span class="token punctuation">,</span> zero<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr />
@@ -725,11 +748,11 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《argparse包使用》
+                    《python提取GFF3文件信息》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/02/20/argparse-bao-shi-yong/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/04/12/python提取GFF3文件信息/" property="cc:attributionName"
                rel="cc:attributionURL">
-                chenxj
+                YTer
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -768,7 +791,7 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
         repo: 'chenxj1101.github.io',
         owner: 'chenxj1101',
         admin: "chenxj1101",
-        id: '2018/02/20/argparse-bao-shi-yong/',
+        id: '2018/04/12/python提取GFF3文件信息/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -793,25 +816,82 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/02/23/purecn-ce-shi/">
+                <a href="/2018/07/26/tensorflow小尝试/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="PureCN测试">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="tensorflow小尝试">
                         
-                        <span class="card-title">PureCN测试</span>
+                        <span class="card-title">tensorflow小尝试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PureCN计算肿瘤细胞纯度
+                            在自己的笔记本上安装了tensorflow-gpu版本，做个记录。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-23
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-26
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tensorflow/" target="_blank">
+                        <span class="chip bg-color">tensorflow</span>
+                    </a>
+                    
+                    <a href="/tags/机器学习/" target="_blank">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/win10/" target="_blank">
+                        <span class="chip bg-color">win10</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/03/25/Pyclone安装测试/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="Pyclone安装测试">
+                        
+                        <span class="card-title">Pyclone安装测试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Pyclone分析肿瘤克隆进化
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-03-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -827,10 +907,6 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/R语言/" target="_blank">
-                        <span class="chip bg-color">R语言</span>
-                    </a>
-                    
                     <a href="/tags/bioinformatics/" target="_blank">
                         <span class="chip bg-color">bioinformatics</span>
                     </a>
@@ -839,62 +915,8 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
                         <span class="chip bg-color">tumor</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/02/20/argparse-bao-shi-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="argparse包使用">
-                        
-                        <span class="card-title">argparse包使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            经常需要使用argparse这个包来写命令行，所以对用法做个记录，以免忘记
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/编程/" class="post-category" target="_blank">
-                                    编程
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Python/" target="_blank">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/argparse/" target="_blank">
-                        <span class="chip bg-color">argparse</span>
-                    </a>
-                    
-                    <a href="/tags/CLI/" target="_blank">
-                        <span class="chip bg-color">CLI</span>
+                    <a href="/tags/Pyclone/" target="_blank">
+                        <span class="chip bg-color">Pyclone</span>
                     </a>
                     
                 </div>
@@ -935,7 +957,7 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: 山海之间<br />'
-            + '作者: chenxj<br />'
+            + '作者: YTer<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 

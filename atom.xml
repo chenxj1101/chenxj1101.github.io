@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>山海之间</title>
   
-  <subtitle>YTer</subtitle>
+  <subtitle>不积跬步，无以至千里</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantinger.com/"/>
@@ -10,7 +10,7 @@
   <id>https://yantinger.com/</id>
   
   <author>
-    <name>chenxj</name>
+    <name>YTer</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>vsftpd安装配置说明</title>
-    <link href="https://yantinger.com/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/"/>
-    <id>https://yantinger.com/2019/08/29/vsftpd-an-zhuang-pei-zhi-shuo-ming/</id>
+    <link href="https://yantinger.com/2019/08/29/vsftpd%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/"/>
+    <id>https://yantinger.com/2019/08/29/vsftpd安装配置说明/</id>
     <published>2019-08-29T09:01:45.000Z</published>
     <updated>2019-08-29T09:02:38.982Z</updated>
     
@@ -49,8 +49,8 @@
   
   <entry>
     <title>UMI简介</title>
-    <link href="https://yantinger.com/2019/07/28/umi-jian-jie/"/>
-    <id>https://yantinger.com/2019/07/28/umi-jian-jie/</id>
+    <link href="https://yantinger.com/2019/07/28/UMI%E7%AE%80%E4%BB%8B/"/>
+    <id>https://yantinger.com/2019/07/28/UMI简介/</id>
     <published>2019-07-28T09:03:59.000Z</published>
     <updated>2019-08-29T09:05:02.686Z</updated>
     
@@ -79,8 +79,8 @@
   
   <entry>
     <title>重复序列注释软件REPET</title>
-    <link href="https://yantinger.com/2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/"/>
-    <id>https://yantinger.com/2018/10/15/chong-fu-xu-lie-zhu-shi-ruan-jian-repet/</id>
+    <link href="https://yantinger.com/2018/10/15/%E9%87%8D%E5%A4%8D%E5%BA%8F%E5%88%97%E6%B3%A8%E9%87%8A%E8%BD%AF%E4%BB%B6REPET/"/>
+    <id>https://yantinger.com/2018/10/15/重复序列注释软件REPET/</id>
     <published>2018-10-15T04:54:16.000Z</published>
     <updated>2019-08-29T09:18:48.172Z</updated>
     
@@ -109,8 +109,8 @@
   
   <entry>
     <title>重复序列类型</title>
-    <link href="https://yantinger.com/2018/09/29/chong-fu-xu-lie-lei-xing/"/>
-    <id>https://yantinger.com/2018/09/29/chong-fu-xu-lie-lei-xing/</id>
+    <link href="https://yantinger.com/2018/09/29/%E9%87%8D%E5%A4%8D%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://yantinger.com/2018/09/29/重复序列类型/</id>
     <published>2018-09-29T09:06:30.000Z</published>
     <updated>2019-08-29T09:16:21.224Z</updated>
     
@@ -141,8 +141,8 @@
   
   <entry>
     <title>tensorflow小尝试</title>
-    <link href="https://yantinger.com/2018/07/26/tensorflow-xiao-chang-shi/"/>
-    <id>https://yantinger.com/2018/07/26/tensorflow-xiao-chang-shi/</id>
+    <link href="https://yantinger.com/2018/07/26/tensorflow%E5%B0%8F%E5%B0%9D%E8%AF%95/"/>
+    <id>https://yantinger.com/2018/07/26/tensorflow小尝试/</id>
     <published>2018-07-26T12:18:56.000Z</published>
     <updated>2019-08-29T09:01:05.922Z</updated>
     
@@ -174,8 +174,8 @@
   
   <entry>
     <title>python提取GFF3文件信息</title>
-    <link href="https://yantinger.com/2018/04/12/python-ti-qu-gff3-wen-jian-xin-xi/"/>
-    <id>https://yantinger.com/2018/04/12/python-ti-qu-gff3-wen-jian-xin-xi/</id>
+    <link href="https://yantinger.com/2018/04/12/python%E6%8F%90%E5%8F%96GFF3%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF/"/>
+    <id>https://yantinger.com/2018/04/12/python提取GFF3文件信息/</id>
     <published>2018-04-12T07:48:44.000Z</published>
     <updated>2019-08-29T08:57:51.957Z</updated>
     
@@ -204,8 +204,8 @@
   
   <entry>
     <title>Pyclone安装测试</title>
-    <link href="https://yantinger.com/2018/03/25/pyclone-an-zhuang-ce-shi/"/>
-    <id>https://yantinger.com/2018/03/25/pyclone-an-zhuang-ce-shi/</id>
+    <link href="https://yantinger.com/2018/03/25/Pyclone%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95/"/>
+    <id>https://yantinger.com/2018/03/25/Pyclone安装测试/</id>
     <published>2018-03-25T08:52:17.000Z</published>
     <updated>2019-08-29T08:54:30.810Z</updated>
     
@@ -234,8 +234,8 @@
   
   <entry>
     <title>PureCN测试</title>
-    <link href="https://yantinger.com/2018/02/23/purecn-ce-shi/"/>
-    <id>https://yantinger.com/2018/02/23/purecn-ce-shi/</id>
+    <link href="https://yantinger.com/2018/02/23/PureCN%E6%B5%8B%E8%AF%95/"/>
+    <id>https://yantinger.com/2018/02/23/PureCN测试/</id>
     <published>2018-02-23T06:09:41.000Z</published>
     <updated>2019-08-29T08:41:36.372Z</updated>
     
@@ -264,8 +264,8 @@
   
   <entry>
     <title>argparse包使用</title>
-    <link href="https://yantinger.com/2018/02/20/argparse-bao-shi-yong/"/>
-    <id>https://yantinger.com/2018/02/20/argparse-bao-shi-yong/</id>
+    <link href="https://yantinger.com/2018/02/20/argparse%E5%8C%85%E4%BD%BF%E7%94%A8/"/>
+    <id>https://yantinger.com/2018/02/20/argparse包使用/</id>
     <published>2018-02-20T12:19:50.000Z</published>
     <updated>2019-08-29T08:41:13.115Z</updated>
     
