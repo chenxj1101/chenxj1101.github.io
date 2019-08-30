@@ -552,7 +552,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"生信","value":6},{"name":"编程","value":1},{"name":"机器学习","value":1},{"name":"Linux","value":1}],
+                data: [{"name":"生信","value":6},{"name":"编程","value":1},{"name":"Linux","value":1},{"name":"机器学习","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -576,7 +576,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         xAxis: [
             {
                 type: 'category',
-                data: ["bioinformatics","tumor","科研","gene","NGS","Python","argparse","CLI","Pyclone","gff"]
+                data: ["bioinformatics","tumor","科研","gene","UMI","NGS","Python","argparse","CLI","gff"]
             }
         ],
         yAxis: [
@@ -706,8 +706,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/R语言/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">R语言</span>
+            <a href="/tags/Pyclone/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Pyclone</span>
+            </a>
+            
+            
+            
+            <a href="/tags/tumor/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">tumor</span>
             </a>
             
             
@@ -718,8 +724,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/tumor/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">tumor</span>
+            <a href="/tags/R语言/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">R语言</span>
             </a>
             
             
@@ -750,12 +756,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/Pyclone/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">Pyclone</span>
-            </a>
-            
-            
-            
             <a href="/tags/gff/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">gff</span>
             </a>
@@ -764,24 +764,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <a href="/tags/gene/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">gene</span>
-            </a>
-            
-            
-            
-            <a href="/tags/tensorflow/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">tensorflow</span>
-            </a>
-            
-            
-            
-            <a href="/tags/机器学习/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">机器学习</span>
-            </a>
-            
-            
-            
-            <a href="/tags/win10/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">win10</span>
             </a>
             
             
@@ -812,6 +794,24 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <a href="/tags/科研/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">科研</span>
+            </a>
+            
+            
+            
+            <a href="/tags/tensorflow/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">tensorflow</span>
+            </a>
+            
+            
+            
+            <a href="/tags/机器学习/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">机器学习</span>
+            </a>
+            
+            
+            
+            <a href="/tags/win10/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">win10</span>
             </a>
             
             
@@ -937,8 +937,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     $(document).ready(function () {
 
         var int = setInterval(fixCount, 50);
-        var pvcountOffset = 80000;
-        var uvcountOffset = 20000;
+        var pvcountOffset = 4000;
+        var uvcountOffset = 1000;
 
         function fixCount() {
             if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
