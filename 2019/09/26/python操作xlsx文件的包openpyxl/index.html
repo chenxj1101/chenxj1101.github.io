@@ -4,10 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="UMI简介, code bioinformatics">
+    <meta name="keywords" content="python操作xlsx文件的包openpyxl, code bioinformatics">
     <meta name="baidu-site-verification" content="upBb6uT01u">
     <meta name="google-site-verification" content="ZUIsMfD3SZEHDz8v4nPW-lm13IBmpOp_vyC-G3jATS8">
-    <meta name="description" content="UMI是什么UMI全称：Unique Molecular Identifiers。又称分子条形码技术，是对原始样本基因组打断后的每一个片段都加上一段特有的标签序列，用于区分同一样本中成千上万的不同的片段，在后续的数据分析中可以通过这些标签序">
+    <meta name="description" content="Python扩展库openpyxl，可以操作07版以上的xlsx文件。可以创建工作簿、选择活动工作表、写入单元格数据，设置单元格字体颜色、边框样式，合并单元格，设置单元格背景等等。
+需要增加可以颜色进入包安装目录的
+
+your_pthon_">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>UMI简介 | 山海之间</title>
+    <title>python操作xlsx文件的包openpyxl | 山海之间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -289,13 +292,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        UMI简介
+                        python操作xlsx文件的包openpyxl
                     </div>
                 </div>
             </div>
@@ -406,16 +409,16 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/UMI/" target="_blank">
-                            <span class="chip bg-color">UMI</span>
+                        <a href="/tags/python/" target="_blank">
+                            <span class="chip bg-color">python</span>
                         </a>
                         
-                        <a href="/tags/NGS/" target="_blank">
-                            <span class="chip bg-color">NGS</span>
+                        <a href="/tags/excel/" target="_blank">
+                            <span class="chip bg-color">excel</span>
                         </a>
                         
-                        <a href="/tags/bioinformatics/" target="_blank">
-                            <span class="chip bg-color">bioinformatics</span>
+                        <a href="/tags/openpyxl/" target="_blank">
+                            <span class="chip bg-color">openpyxl</span>
                         </a>
                         
                     </div>
@@ -426,8 +429,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/生信/" class="post-category" target="_blank">
-                            生信
+                        <a href="/categories/编程/" class="post-category" target="_blank">
+                            编程
                         </a>
                         
                     </div>
@@ -438,7 +441,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-28
+                    2019-09-26
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -452,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    464
+                    725
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
                 
@@ -475,17 +478,93 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="UMI是什么"><a href="#UMI是什么" class="headerlink" title="UMI是什么"></a>UMI是什么</h2><p><strong>UMI</strong>全称：<em>Unique Molecular Identifiers</em>。<br>又称分子条形码技术，是对原始样本基因组打断后的每一个片段都加上一段特有的标签序列，用于区分同一样本中成千上万的不同的片段，在后续的数据分析中可以通过这些标签序列来排除由于 <strong>DNA</strong> 聚合酶和扩增以及测序过程中所引入的错误。分子条形码通常由大约 <code>10nt</code> 左右的随机序列（比如 NNNNNNN)，或者简并碱基（NNNRNYN）组成。<br>有别于样品标签（<code>sample index</code> 或 <code>sample barcode</code>），分子条形码是针对同一个样本中的不同片段加上的标签序列，而样品标签是用于区分不同样本而加上的标签序列。<br>因此，每一个样本只能有一个相同的样品标签，但可以有成千上万的分子条形码。</p>
-<p><strong>UMI是给同一个样本的不同片段打上标签</strong></p>
-<h2 id="UMI加在哪里？"><a href="#UMI加在哪里？" class="headerlink" title="UMI加在哪里？"></a>UMI加在哪里？</h2><p>双端<code>index</code>，如果一端的<code>index</code>已经可以区分不同的样本。则另一端<code>index</code>的位置上可以用<code>UMI</code>来代替。即<code>UMI</code>在<code>index</code>的位置上。<code>UMI</code>的长度与<code>index</code>相同。</p>
-<p><code>UMI</code>也可以加在插入片段中，在<code>index</code>和<code>UMI</code>之间可能需要连接酶链接。在我们的某个项目中，<code>UMI</code>就是加在插入片段中，<code>index</code>和<code>UMI</code>之间有<code>8bp</code>的酶切位点。</p>
-<h2 id="UMI如何处理？"><a href="#UMI如何处理？" class="headerlink" title="UMI如何处理？"></a>UMI如何处理？</h2><p>使用<code>fastp</code>和<code>gencore</code>软件可以很方便的处理<code>UMI</code>。</p>
-<h3 id="标记UMI"><a href="#标记UMI" class="headerlink" title="标记UMI"></a>标记UMI</h3><p>使用<code>fastp</code>标记<code>reads</code>上的<code>UMI</code>序列</p>
-<pre class="line-numbers language-bash"><code class="language-bash">fastp -i R1.fq -o out.R1.fq -U --umi_loc<span class="token operator">=</span>read1 --umi_len<span class="token operator">=</span>8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>--umi_loc</code>指定<code>UMI</code>的位置，如果是在<code>reads</code>上，则还需要指定<code>UMI</code>的长度。</p>
-<p><a href="https://github.com/OpenGene/fastp" target="_blank" rel="noopener">FASTP用法</a></p>
-<h3 id="得到一致性序列"><a href="#得到一致性序列" class="headerlink" title="得到一致性序列"></a>得到一致性序列</h3><p>使用<code>gencore</code>的可以得到一致性序列</p>
-<pre class="line-numbers language-bash"><code class="language-bash">gencore -i in.bam -o out.bam -r hg19.fa -s 3 --umi_prefix<span class="token operator">=</span>UMI --ratio_threshold<span class="token operator">=</span>0.9 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>Python扩展库openpyxl，可以操作07版以上的xlsx文件。可以创建工作簿、选择活动工作表、写入单元格数据，设置单元格字体颜色、边框样式，合并单元格，设置单元格背景等等。</p>
+<p>需要增加可以颜色进入包安装目录的</p>
+<blockquote>
+<p>your_pthon_path/site-packages/openpyxl/styles  </p>
+</blockquote>
+<p>修改colors.py文件下的</p>
+<pre><code>COLOR_INDEX = (
+    &#39;00000000&#39;, &#39;00FFFFFF&#39;, &#39;00FF0000&#39;, &#39;0000FF00&#39;, &#39;000000FF&#39;, #0-4
+    &#39;00FFFF00&#39;, &#39;00FF00FF&#39;, &#39;0000FFFF&#39;, &#39;00000000&#39;, &#39;00FFFFFF&#39;, #5-9
+    &#39;00FF0000&#39;, &#39;0000FF00&#39;, &#39;000000FF&#39;, &#39;00FFFF00&#39;, &#39;00FF00FF&#39;, #10-14
+    &#39;0000FFFF&#39;, &#39;00800000&#39;, &#39;00008000&#39;, &#39;00000080&#39;, &#39;00808000&#39;, #15-19
+    &#39;00800080&#39;, &#39;00008080&#39;, &#39;00C0C0C0&#39;, &#39;00808080&#39;, &#39;009999FF&#39;, #20-24
+    &#39;00993366&#39;, &#39;00FFFFCC&#39;, &#39;00CCFFFF&#39;, &#39;00660066&#39;, &#39;00FF8080&#39;, #25-29
+    &#39;000066CC&#39;, &#39;00CCCCFF&#39;, &#39;00000080&#39;, &#39;00FF00FF&#39;, &#39;00FFFF00&#39;, #30-34
+    &#39;0000FFFF&#39;, &#39;00800080&#39;, &#39;00800000&#39;, &#39;00008080&#39;, &#39;000000FF&#39;, #35-39
+    &#39;0000CCFF&#39;, &#39;00CCFFFF&#39;, &#39;00CCFFCC&#39;, &#39;00FFFF99&#39;, &#39;0099CCFF&#39;, #40-44
+    &#39;00FF99CC&#39;, &#39;00CC99FF&#39;, &#39;00FFCC99&#39;, &#39;003366FF&#39;, &#39;0033CCCC&#39;, #45-49
+    &#39;0099CC00&#39;, &#39;00FFCC00&#39;, &#39;00FF9900&#39;, &#39;00FF6600&#39;, &#39;00666699&#39;, #50-54
+    &#39;00969696&#39;, &#39;00003366&#39;, &#39;00339966&#39;, &#39;00003300&#39;, &#39;00333300&#39;, #55-59
+    &#39;00993300&#39;, &#39;00993366&#39;, &#39;00333399&#39;, &#39;00333333&#39;, &#39;System Foreground&#39;, &#39;System Background&#39; #60-64
+    &#39;00D2B48C&#39;, &#39;0087CEFA&#39;, &#39;0000BFFF&#39; #自己添加的
+)</code></pre><p>以00+16进制RGB颜色代码的形式即可</p>
+<p>自己写的一个生成xlsx文件的代码：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python</span>
+<span class="token comment" spellcheck="true">#-*- coding: utf-8 -*-</span>
+
+<span class="token keyword">import</span> openpyxl
+<span class="token keyword">from</span> openpyxl <span class="token keyword">import</span> Workbook
+<span class="token keyword">from</span> openpyxl<span class="token punctuation">.</span>styles <span class="token keyword">import</span> colors<span class="token punctuation">,</span>Font<span class="token punctuation">,</span>Border<span class="token punctuation">,</span>Side<span class="token punctuation">,</span>PatternFill<span class="token punctuation">,</span>Alignment
+
+wb <span class="token operator">=</span> Workbook<span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">#创建工作簿</span>
+ws <span class="token operator">=</span> wb<span class="token punctuation">.</span>active       <span class="token comment" spellcheck="true">#激活工作簿</span>
+
+ws<span class="token punctuation">.</span>merge_cells<span class="token punctuation">(</span><span class="token string">'C3:E3'</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">#合并单元格</span>
+ws<span class="token punctuation">.</span>merge_cells<span class="token punctuation">(</span><span class="token string">'C4:E4'</span><span class="token punctuation">)</span>
+ws<span class="token punctuation">.</span>merge_cells<span class="token punctuation">(</span><span class="token string">'C20:I20'</span><span class="token punctuation">)</span>
+ws<span class="token punctuation">.</span>merge_cells<span class="token punctuation">(</span><span class="token string">'C21:I21'</span><span class="token punctuation">)</span>
+left<span class="token punctuation">,</span> right<span class="token punctuation">,</span> top<span class="token punctuation">,</span> bottom <span class="token operator">=</span> <span class="token punctuation">[</span>Side<span class="token punctuation">(</span>style<span class="token operator">=</span><span class="token string">'thin'</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'000000'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">4</span>  <span class="token comment" spellcheck="true">#设置单元格边框属性</span>
+border <span class="token operator">=</span> Border<span class="token punctuation">(</span>left<span class="token operator">=</span>left<span class="token punctuation">,</span> right<span class="token operator">=</span>right<span class="token punctuation">,</span> top<span class="token operator">=</span>top<span class="token punctuation">,</span> bottom<span class="token operator">=</span>bottom<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">#设置单元格边框格式</span>
+fill1 <span class="token operator">=</span> PatternFill<span class="token punctuation">(</span>start_color <span class="token operator">=</span> <span class="token string">'FFFF00'</span><span class="token punctuation">,</span> end_color <span class="token operator">=</span> <span class="token string">'FFFF00'</span><span class="token punctuation">,</span> fill_type <span class="token operator">=</span> <span class="token string">'solid'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#设置单元格背景色</span>
+fill2 <span class="token operator">=</span> PatternFill<span class="token punctuation">(</span>start_color <span class="token operator">=</span> <span class="token string">'D2B48C'</span><span class="token punctuation">,</span> end_color <span class="token operator">=</span> <span class="token string">'D2B48C'</span><span class="token punctuation">,</span> fill_type <span class="token operator">=</span> <span class="token string">'solid'</span><span class="token punctuation">)</span>
+fill3 <span class="token operator">=</span> PatternFill<span class="token punctuation">(</span>start_color <span class="token operator">=</span> <span class="token string">'00BFFF'</span><span class="token punctuation">,</span> end_color <span class="token operator">=</span> <span class="token string">'00BFFF'</span><span class="token punctuation">,</span> fill_type <span class="token operator">=</span> <span class="token string">'solid'</span><span class="token punctuation">)</span>
+fill4 <span class="token operator">=</span> PatternFill<span class="token punctuation">(</span>start_color <span class="token operator">=</span> <span class="token string">'FF0000'</span><span class="token punctuation">,</span> end_color <span class="token operator">=</span> <span class="token string">'FF0000'</span><span class="token punctuation">,</span> fill_type <span class="token operator">=</span> <span class="token string">'solid'</span><span class="token punctuation">)</span>
+align1 <span class="token operator">=</span> Alignment<span class="token punctuation">(</span>horizontal<span class="token operator">=</span><span class="token string">'center'</span><span class="token punctuation">,</span> vertical<span class="token operator">=</span><span class="token string">'center'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#设置文本对齐</span>
+align2 <span class="token operator">=</span> Alignment<span class="token punctuation">(</span>horizontal<span class="token operator">=</span><span class="token string">'left'</span><span class="token punctuation">,</span> vertical<span class="token operator">=</span><span class="token string">'center'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'CDEFGHIJK'</span><span class="token punctuation">:</span>
+        ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>border <span class="token operator">=</span> border <span class="token comment" spellcheck="true">#给每个单元格设置相应的格式     </span>
+        <span class="token comment" spellcheck="true">#ws[col+str(3)].fill = fill1</span>
+        <span class="token comment" spellcheck="true">#ws[col+str(i)].alignment = align</span>
+
+<span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'CDEFGHIJK'</span><span class="token punctuation">:</span>
+    ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>fill <span class="token operator">=</span> fill1
+    ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>fill <span class="token operator">=</span> fill3
+    ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>fill <span class="token operator">=</span> fill4
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>fill <span class="token operator">=</span> fill2
+
+<span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'CDEFGHIJK'</span><span class="token punctuation">:</span>
+    ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>alignment <span class="token operator">=</span> align1
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'CDE'</span><span class="token punctuation">:</span>
+        ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>alignment <span class="token operator">=</span> align2
+
+
+<span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'CDEFGHIJK'</span><span class="token punctuation">:</span>
+    ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'test1'</span>  <span class="token comment" spellcheck="true">#单元格赋值</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'CDE'</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">and</span> col <span class="token operator">==</span> <span class="token string">'C'</span><span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'test2'</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'EFGHIJK'</span><span class="token punctuation">:</span>
+        ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">50</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> col <span class="token keyword">in</span> <span class="token string">'JK'</span><span class="token punctuation">:</span>
+        ws<span class="token punctuation">[</span>col<span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span>
+
+wb<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">'test.xlsx'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#保存文件</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>单元格字体等也可以使用相应的模块去设置，具体可以见<a href="https://openpyxl.readthedocs.io/en/stable/" target="_blank" rel="noopener">官方说明文档</a></p>
 
             </div>
             <hr />
@@ -644,9 +723,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《UMI简介》
+                    《python操作xlsx文件的包openpyxl》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/28/UMI简介/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/26/python操作xlsx文件的包openpyxl/" property="cc:attributionName"
                rel="cc:attributionURL">
                 YTer
             </a> 采用
@@ -687,7 +766,7 @@
         repo: 'chenxj1101.github.io',
         owner: 'chenxj1101',
         admin: "chenxj1101",
-        id: '2019/07/28/UMI简介/',
+        id: '2019/09/26/python操作xlsx文件的包openpyxl/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -708,9 +787,68 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/09/26/python操作xlsx文件的包openpyxl/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="python操作xlsx文件的包openpyxl">
+                        
+                        <span class="card-title">python操作xlsx文件的包openpyxl</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            记录下自定义的openpyxl设置
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/编程/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/excel/" target="_blank">
+                        <span class="chip bg-color">excel</span>
+                    </a>
+                    
+                    <a href="/tags/openpyxl/" target="_blank">
+                        <span class="chip bg-color">openpyxl</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/08/29/vsftpd安装配置说明/">
                     <div class="card-image">
@@ -728,9 +866,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -756,63 +894,6 @@
                     
                     <a href="/tags/vsftpd/" target="_blank">
                         <span class="chip bg-color">vsftpd</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/10/15/重复序列注释软件REPET/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="重复序列注释软件REPET">
-                        
-                        <span class="card-title">重复序列注释软件REPET</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            REPET详细说明
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/生信/" class="post-category" target="_blank">
-                                    生信
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/bioinformatics/" target="_blank">
-                        <span class="chip bg-color">bioinformatics</span>
-                    </a>
-                    
-                    <a href="/tags/REPET/" target="_blank">
-                        <span class="chip bg-color">REPET</span>
-                    </a>
-                    
-                    <a href="/tags/科研/" target="_blank">
-                        <span class="chip bg-color">科研</span>
                     </a>
                     
                 </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantinger.com/"/>
-  <updated>2019-08-29T09:02:38.982Z</updated>
+  <updated>2019-09-26T07:34:15.187Z</updated>
   <id>https://yantinger.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python操作xlsx文件的包openpyxl</title>
+    <link href="https://yantinger.com/2019/09/26/python%E6%93%8D%E4%BD%9Cxlsx%E6%96%87%E4%BB%B6%E7%9A%84%E5%8C%85openpyxl/"/>
+    <id>https://yantinger.com/2019/09/26/python操作xlsx文件的包openpyxl/</id>
+    <published>2019-09-26T07:28:44.000Z</published>
+    <updated>2019-09-26T07:34:15.187Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Python扩展库openpyxl，可以操作07版以上的xlsx文件。可以创建工作簿、选择活动工作表、写入单元格数据，设置单元格字体颜色、边框样式，合并单元格，设置单元格背景等等。&lt;/p&gt;
+&lt;p&gt;需要增加可以颜色进入包安装目录的&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;yo
+        
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://yantinger.com/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="python" scheme="https://yantinger.com/tags/python/"/>
+    
+      <category term="excel" scheme="https://yantinger.com/tags/excel/"/>
+    
+      <category term="openpyxl" scheme="https://yantinger.com/tags/openpyxl/"/>
+    
+  </entry>
   
   <entry>
     <title>vsftpd安装配置说明</title>
@@ -69,11 +102,11 @@
       <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
     
     
-      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
-    
       <category term="UMI" scheme="https://yantinger.com/tags/UMI/"/>
     
       <category term="NGS" scheme="https://yantinger.com/tags/NGS/"/>
+    
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
     
   </entry>
   
@@ -224,11 +257,11 @@
       <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
     
     
-      <category term="Pyclone" scheme="https://yantinger.com/tags/Pyclone/"/>
+      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
     
       <category term="tumor" scheme="https://yantinger.com/tags/tumor/"/>
     
-      <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
+      <category term="Pyclone" scheme="https://yantinger.com/tags/Pyclone/"/>
     
   </entry>
   
@@ -254,11 +287,11 @@
       <category term="生信" scheme="https://yantinger.com/categories/%E7%94%9F%E4%BF%A1/"/>
     
     
-      <category term="tumor" scheme="https://yantinger.com/tags/tumor/"/>
-    
       <category term="bioinformatics" scheme="https://yantinger.com/tags/bioinformatics/"/>
     
       <category term="R语言" scheme="https://yantinger.com/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="tumor" scheme="https://yantinger.com/tags/tumor/"/>
     
   </entry>
   
