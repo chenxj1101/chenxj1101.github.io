@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yantinger.com/2019/11/07/%E5%86%B3%E7%AD%96%E6%A0%91/</loc>
+    
+    <lastmod>2019-11-07T08:41:48.227Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yantinger.com/2019/09/26/python%E6%93%8D%E4%BD%9Cxlsx%E6%96%87%E4%BB%B6%E7%9A%84%E5%8C%85openpyxl/</loc>
     
     <lastmod>2019-09-26T07:34:15.187Z</lastmod>
@@ -100,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://yantinger.com/tags/index.html</loc>
-    
-    <lastmod>2019-08-21T07:26:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yantinger.com/categories/index.html</loc>
     
     <lastmod>2019-08-21T07:26:13.000Z</lastmod>
@@ -115,6 +115,13 @@
   
   <url>
     <loc>https://yantinger.com/archives/index.html</loc>
+    
+    <lastmod>2019-08-21T07:26:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yantinger.com/tags/index.html</loc>
     
     <lastmod>2019-08-21T07:26:13.000Z</lastmod>
     
