@@ -8,7 +8,7 @@
       <link href="/2019/12/05/Git%E9%92%A9%E5%AD%90%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
       <url>/2019/12/05/Git%E9%92%A9%E5%AD%90%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</url>
       
-        <content type="html"><![CDATA[<h1 id="Git钩子实现自动部署"><a href="#Git钩子实现自动部署" class="headerlink" title="Git钩子实现自动部署"></a>Git钩子实现自动部署</h1><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul><li><p>本地仓库：平时开发所在的环境，可以简单的理解为自己的电脑，记为<strong>L1</strong></p></li><li><p>远程git服务器：<code>git</code>服务所在的服务器，比如我们自己内部搭建的<code>gitlab</code>服务运行在31服务器上，记为<strong>G1</strong> </p></li><li><p>远程仓库： 运行仓库代码运行所在的服务器，比如我们的<code>webserver</code>运行的服务器，记为<strong>R1</strong>  </p></li></ul><p>在这里，我们的<strong>G1</strong>和<strong>R1</strong>恰好是同一台机器</p><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>假设<strong>G1</strong>上已经有存在的仓库<code>webserver</code>，并且在<strong>L1</strong>和<strong>R1</strong>上都已经有通过<code>git clone</code>命令下载过来的版本一致的代码。并且<strong>R1</strong>上运行<code>&#39;webserver</code>的用户为<code>user1</code>  </p><h4 id="ssh免密登录"><a href="#ssh免密登录" class="headerlink" title="ssh免密登录"></a>ssh免密登录</h4><p>首先要实现运行<code>git</code>服务的用户(<strong>用户git</strong>）和<code>user1</code>的<code>ssh</code> 免密登录。即<code>git</code>可以通过</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>直接登录<code>user1</code>  </p><p>在<code>git</code>用户下，运行命令</p><pre class="line-numbers language-bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>会在<code>git</code>的 <code>home</code>目录下生成私钥和公钥文件：</p><pre class="line-numbers language-bash"><code class="language-bash">~/.ssh/id_rsa  <span class="token comment" spellcheck="true">#私钥</span>~/.ssh/id_rsa.pub  <span class="token comment" spellcheck="true">#公钥</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>如果home目录下已经存在密钥文件，则不需要重新生成。否则以前生成的密钥会失效！</strong></p><p>将<code>git</code>用户的公钥添加到<code>user1</code>的<code>~/.ssh/authorized_keys</code>中，即</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> ~/.ssh/id_rsa.pub <span class="token operator">>></span> /home/user1/.ssh/authorized_keys <span class="token comment" spellcheck="true">#权限问题，这个命令不会成功，自己实现相同的结果即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>然后在<code>user1</code>下修改<code>authorized_keys</code>的权限：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chmod</span> 600 ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>再回到<code>git</code>用户下，执行：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>不用输入密码，即可直接登录<code>user1</code>用户</p><h4 id="拉取更新脚本"><a href="#拉取更新脚本" class="headerlink" title="拉取更新脚本"></a>拉取更新脚本</h4><p>在<code>user1</code>用户下，新建一个脚本，实现从仓库拉取更新的功能，示例如下：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>DeployPath<span class="token operator">=</span><span class="token string">"/mnt/analysis/tests/test_uesr1/tmp/webserver"</span>  <span class="token comment" spellcheck="true">#远程仓库路径</span><span class="token function">cd</span> <span class="token variable">$DeployPath</span>IS_BARE<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> rev-parse --is-bare-repository<span class="token variable">)</span></span><span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$IS_BARE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span><span class="token keyword">echo</span> <span class="token operator">></span><span class="token operator">&amp;</span>2 <span class="token string">"fatal: post-receive: IS_NOT_BARE"</span><span class="token keyword">exit</span> 1<span class="token keyword">fi</span>unset GIT_DIR<span class="token keyword">echo</span> <span class="token string">"=========================="</span><span class="token keyword">echo</span> <span class="token string">"deploying the webserver"</span><span class="token function">git</span> fetch --all  <span class="token comment" spellcheck="true">#使用fetch，不会自动merge</span><span class="token function">git</span> reset --hard origin/master <span class="token comment" spellcheck="true">#强制和远程仓库保持一致</span>time<span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span><span class="token variable">`</span></span><span class="token keyword">echo</span> <span class="token string">"webserver fetch at time: <span class="token variable">$time</span>."</span><span class="token keyword">echo</span> <span class="token string">"=========================="</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>可以将此脚本放在<code>&#39;home</code>目录下，命名为<code>git_fetch.sh</code></p><h3 id="钩子的实现"><a href="#钩子的实现" class="headerlink" title="钩子的实现"></a>钩子的实现</h3><p><code>git</code>服务在服务器上会有相应的目录，在该目录下会有所有用户的所有仓库信息。因为我们要实现的是服务端钩子，所以需要在<code>git</code>服务的服务器上设置。</p><p>在我们的<strong>G1</strong>上运行的是<code>gitlab</code>服务，路径为：</p><pre class="line-numbers language-bash"><code class="language-bash"> /var/opt/gitlab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>注意</strong>：<code>git</code>用户的<code>home</code>目录也在该路径下</p><p>在该路径下的<code>git-data/repositories</code>目录保存的就是仓库信息。进入我们需要设置钩子的仓库，比如:</p><pre class="line-numbers language-bahs"><code class="language-bahs">/var/opt/gitlab/git-data/repositories/user1/webserver.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在这个目录下，有一个<code>hooks</code>目录，这是一个软连接，里面是全局钩子。这里的钩子修改，所有的仓库都会执行。<br>因为我们只想设置单独的仓库，所以我们需要在当前仓库新建一个<code>custom_hooks</code>的目录，这个名称是写死的，不能用其他名称。<br>在<code>custom_hooks</code>下新建<code>post-receive</code>文件，名称同样是定死的。这个名称的钩子代表<code>push</code>之后执行的动作：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> custom_hooks <span class="token comment" spellcheck="true">#/var/opt/gitlab/git-data/repositories/user1/webserver.git/custom_hooks</span><span class="token function">cd</span> custom_hooksvim post-receive <span class="token comment" spellcheck="true"># 注意是横扛，不是下划线</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>在<code>post-receive</code>里写以下命令：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx  <span class="token string">"sh ~/git_fetch.sh"</span>  <span class="token comment" spellcheck="true">#即登录user1，然后user1执行拉取更新的脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>以上新建文件夹和文件的步骤如果是用<code>root</code>或者其他<strong>非git</strong>用户操作的，操作完后需要把所有者改成<code>git</code>：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chown</span> -R git:git custom_hooks<span class="token function">chmod</span> -R 777 custom_hokks  <span class="token comment" spellcheck="true"># 755应该也可以</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>到此钩子的设置就完成了。接下来在本地<strong>L1</strong>修改完代码<code>push</code>到远程仓库后，<strong>R1</strong>上的代码也会自动从远程仓库拉取更新。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>工作流程其实很简单，主要是要分清各个角色执行的功能。</p><ol><li><strong>L1</strong>修改代码，然后push给远程仓库，即<strong>G1</strong></li><li><strong>G1</strong>上的仓库有<code>post-receive</code>钩子，但是执行用户是<code>git</code>。<code>git</code>用户无权限对<code>user1</code>的仓库进行操作，所以通过<code>ssh</code>的方式登录到<code>user1</code>执行拉取更新的操作</li></ol>]]></content>
+        <content type="html"><![CDATA[<h1 id="Git钩子实现自动部署"><a href="#Git钩子实现自动部署" class="headerlink" title="Git钩子实现自动部署"></a>Git钩子实现自动部署</h1><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul><li><p>本地仓库：平时开发所在的环境，可以简单的理解为自己的电脑，记为<strong>L1</strong></p></li><li><p>远程git服务器：<code>git</code>服务所在的服务器，比如我们自己内部搭建的<code>gitlab</code>服务运行在31服务器上，记为<strong>G1</strong> </p></li><li><p>远程仓库： 运行仓库代码运行所在的服务器，比如我们的<code>webserver</code>运行的服务器，记为<strong>R1</strong>  </p></li></ul><p>在这里，我们的<strong>G1</strong>和<strong>R1</strong>恰好是同一台机器</p><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>假设<strong>G1</strong>上已经有存在的仓库<code>webserver</code>，并且在<strong>L1</strong>和<strong>R1</strong>上都已经有通过<code>git clone</code>命令下载过来的版本一致的代码。并且<strong>R1</strong>上运行<code>&#39;webserver</code>的用户为<code>user1</code>  </p><h4 id="ssh免密登录"><a href="#ssh免密登录" class="headerlink" title="ssh免密登录"></a>ssh免密登录</h4><p>首先要实现运行<code>git</code>服务的用户(<strong>用户git</strong>）和<code>user1</code>的<code>ssh</code> 免密登录。即<code>git</code>可以通过</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>直接登录<code>user1</code>  </p><p>在<code>git</code>用户下，运行命令</p><pre class="line-numbers language-bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>会在<code>git</code>的 <code>home</code>目录下生成私钥和公钥文件：</p><pre class="line-numbers language-bash"><code class="language-bash">~/.ssh/id_rsa  <span class="token comment" spellcheck="true">#私钥</span>~/.ssh/id_rsa.pub  <span class="token comment" spellcheck="true">#公钥</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>如果home目录下已经存在密钥文件，则不需要重新生成。否则以前生成的密钥会失效！</strong></p><p>将<code>git</code>用户的公钥添加到<code>user1</code>的<code>~/.ssh/authorized_keys</code>中，即</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> ~/.ssh/id_rsa.pub <span class="token operator">>></span> /home/user1/.ssh/authorized_keys <span class="token comment" spellcheck="true">#权限问题，这个命令不会成功，自己实现相同的结果即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>然后在<code>user1</code>下修改<code>authorized_keys</code>的权限：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chmod</span> 600 ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>再回到<code>git</code>用户下，执行：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>不用输入密码，即可直接登录<code>user1</code>用户</p><h4 id="拉取更新脚本"><a href="#拉取更新脚本" class="headerlink" title="拉取更新脚本"></a>拉取更新脚本</h4><p>在<code>user1</code>用户下，新建一个脚本，实现从仓库拉取更新的功能，示例如下：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>DeployPath<span class="token operator">=</span><span class="token string">"/mnt/analysis/tests/test_uesr1/tmp/webserver"</span>  <span class="token comment" spellcheck="true">#远程仓库路径</span><span class="token function">cd</span> <span class="token variable">$DeployPath</span>IS_BARE<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> rev-parse --is-bare-repository<span class="token variable">)</span></span><span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$IS_BARE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span><span class="token keyword">echo</span> <span class="token operator">></span><span class="token operator">&amp;</span>2 <span class="token string">"fatal: post-receive: IS_NOT_BARE"</span><span class="token keyword">exit</span> 1<span class="token keyword">fi</span>unset GIT_DIR<span class="token keyword">echo</span> <span class="token string">"=========================="</span><span class="token keyword">echo</span> <span class="token string">"deploying the webserver"</span><span class="token function">git</span> fetch --all  <span class="token comment" spellcheck="true">#使用fetch，不会自动merge</span><span class="token function">git</span> reset --hard origin/master <span class="token comment" spellcheck="true">#强制和远程仓库保持一致</span>time<span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span><span class="token variable">`</span></span><span class="token keyword">echo</span> <span class="token string">"webserver fetch at time: <span class="token variable">$time</span>."</span><span class="token keyword">echo</span> <span class="token string">"=========================="</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>可以将此脚本放在<code>home</code>目录下，命名为<code>git_fetch.sh</code></p><h3 id="钩子的实现"><a href="#钩子的实现" class="headerlink" title="钩子的实现"></a>钩子的实现</h3><p><code>git</code>服务在服务器上会有相应的目录，在该目录下会有所有用户的所有仓库信息。因为我们要实现的是服务端钩子，所以需要在<code>git</code>服务的服务器上设置。</p><p>在我们的<strong>G1</strong>上运行的是<code>gitlab</code>服务，路径为：</p><pre class="line-numbers language-bash"><code class="language-bash"> /var/opt/gitlab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>注意</strong>：<code>git</code>用户的<code>home</code>目录也在该路径下</p><p>在该路径下的<code>git-data/repositories</code>目录保存的就是仓库信息。进入我们需要设置钩子的仓库，比如:</p><pre class="line-numbers language-bahs"><code class="language-bahs">/var/opt/gitlab/git-data/repositories/user1/webserver.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在这个目录下，有一个<code>hooks</code>目录，这是一个软连接，里面是全局钩子。这里的钩子修改，所有的仓库都会执行。<br>因为我们只想设置单独的仓库，所以我们需要在当前仓库新建一个<code>custom_hooks</code>的目录，这个名称是写死的，不能用其他名称。<br>在<code>custom_hooks</code>下新建<code>post-receive</code>文件，名称同样是定死的。这个名称的钩子代表<code>push</code>之后执行的动作：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> custom_hooks <span class="token comment" spellcheck="true">#/var/opt/gitlab/git-data/repositories/user1/webserver.git/custom_hooks</span><span class="token function">cd</span> custom_hooksvim post-receive <span class="token comment" spellcheck="true"># 注意是横扛，不是下划线</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>在<code>post-receive</code>里写以下命令：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx  <span class="token string">"sh ~/git_fetch.sh"</span>  <span class="token comment" spellcheck="true">#即登录user1，然后user1执行拉取更新的脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>以上新建文件夹和文件的步骤如果是用<code>root</code>或者其他<strong>非git</strong>用户操作的，操作完后需要把所有者改成<code>git</code>：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chown</span> -R git:git custom_hooks<span class="token function">chmod</span> -R 777 custom_hokks  <span class="token comment" spellcheck="true"># 755应该也可以</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>到此钩子的设置就完成了。接下来在本地<strong>L1</strong>修改完代码<code>push</code>到远程仓库后，<strong>R1</strong>上的代码也会自动从远程仓库拉取更新。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>工作流程其实很简单，主要是要分清各个角色执行的功能。</p><ol><li><strong>L1</strong>修改代码，然后push给远程仓库，即<strong>G1</strong></li><li><strong>G1</strong>上的仓库有<code>post-receive</code>钩子，但是执行用户是<code>git</code>。<code>git</code>用户无权限对<code>user1</code>的仓库进行操作，所以通过<code>ssh</code>的方式登录到<code>user1</code>执行拉取更新的操作</li></ol>]]></content>
       
       
       <categories>
@@ -49,9 +49,9 @@
       
         <tags>
             
-            <tag> CART </tag>
-            
             <tag> 机器学习 </tag>
+            
+            <tag> CART </tag>
             
             <tag> 决策树 </tag>
             
@@ -136,11 +136,11 @@
       
         <tags>
             
-            <tag> bioinformatics </tag>
-            
             <tag> UMI </tag>
             
             <tag> NGS </tag>
+            
+            <tag> bioinformatics </tag>
             
         </tags>
       
@@ -167,9 +167,9 @@
             
             <tag> bioinformatics </tag>
             
-            <tag> 科研 </tag>
-            
             <tag> REPET </tag>
+            
+            <tag> 科研 </tag>
             
         </tags>
       
@@ -196,9 +196,9 @@
             
             <tag> bioinformatics </tag>
             
-            <tag> 重复序列 </tag>
-            
             <tag> 科研 </tag>
+            
+            <tag> 重复序列 </tag>
             
         </tags>
       
@@ -223,9 +223,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
-            
             <tag> tensorflow </tag>
+            
+            <tag> 机器学习 </tag>
             
             <tag> win10 </tag>
             
@@ -281,11 +281,11 @@
       
         <tags>
             
+            <tag> bioinformatics </tag>
+            
             <tag> Pyclone </tag>
             
             <tag> tumor </tag>
-            
-            <tag> bioinformatics </tag>
             
         </tags>
       
@@ -310,9 +310,9 @@
       
         <tags>
             
-            <tag> tumor </tag>
-            
             <tag> bioinformatics </tag>
+            
+            <tag> tumor </tag>
             
             <tag> R语言 </tag>
             

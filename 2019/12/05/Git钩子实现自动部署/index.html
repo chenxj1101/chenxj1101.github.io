@@ -529,7 +529,7 @@ unset GIT_DIR
 time<span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span><span class="token variable">`</span></span>
 <span class="token keyword">echo</span> <span class="token string">"webserver fetch at time: <span class="token variable">$time</span>."</span>
 <span class="token keyword">echo</span> <span class="token string">"=========================="</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以将此脚本放在<code>&#39;home</code>目录下，命名为<code>git_fetch.sh</code></p>
+<p>可以将此脚本放在<code>home</code>目录下，命名为<code>git_fetch.sh</code></p>
 <h3 id="钩子的实现"><a href="#钩子的实现" class="headerlink" title="钩子的实现"></a>钩子的实现</h3><p><code>git</code>服务在服务器上会有相应的目录，在该目录下会有所有用户的所有仓库信息。因为我们要实现的是服务端钩子，所以需要在<code>git</code>服务的服务器上设置。</p>
 <p>在我们的<strong>G1</strong>上运行的是<code>gitlab</code>服务，路径为：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"> /var/opt/gitlab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -873,12 +873,12 @@ vim post-receive <span class="token comment" spellcheck="true"># 注意是横扛
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CART/" target="_blank">
-                        <span class="chip bg-color">CART</span>
-                    </a>
-                    
                     <a href="/tags/机器学习/" target="_blank">
                         <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/CART/" target="_blank">
+                        <span class="chip bg-color">CART</span>
                     </a>
                     
                     <a href="/tags/决策树/" target="_blank">
