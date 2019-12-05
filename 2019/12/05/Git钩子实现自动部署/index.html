@@ -4,13 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="argparse包使用, code bioinformatics">
+    <meta name="keywords" content="Git钩子实现自动部署, code bioinformatics">
     <meta name="baidu-site-verification" content="upBb6uT01u">
     <meta name="google-site-verification" content="ZUIsMfD3SZEHDz8v4nPW-lm13IBmpOp_vyC-G3jATS8">
-    <meta name="description" content="Argparse简介argparse是python自带的一个命令行解析包，非常适合编写可读性好的命令行程序。要使用的话，直接导入即可，无需另外安装。
-实例新建一个 parse.py文件如下：
-# !/usr/bin/python
-# -*-">
+    <meta name="description" content="Git钩子实现自动部署概念
+本地仓库：平时开发所在的环境，可以简单的理解为自己的电脑，记为L1
+
+远程git服务器：git服务所在的服务器，比如我们自己内部搭建的gitlab服务运行在31服务器上，记为G1 
+
+远程仓库： 运行仓库代码运行">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>argparse包使用 | 山海之间</title>
+    <title>Git钩子实现自动部署 | 山海之间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +294,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        argparse包使用
+                        Git钩子实现自动部署
                     </div>
                 </div>
             </div>
@@ -409,16 +411,16 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Python/" target="_blank">
-                            <span class="chip bg-color">Python</span>
+                        <a href="/tags/hook/" target="_blank">
+                            <span class="chip bg-color">hook</span>
                         </a>
                         
-                        <a href="/tags/argparse/" target="_blank">
-                            <span class="chip bg-color">argparse</span>
+                        <a href="/tags/linux/" target="_blank">
+                            <span class="chip bg-color">linux</span>
                         </a>
                         
-                        <a href="/tags/CLI/" target="_blank">
-                            <span class="chip bg-color">CLI</span>
+                        <a href="/tags/Git/" target="_blank">
+                            <span class="chip bg-color">Git</span>
                         </a>
                         
                     </div>
@@ -429,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/编程/" class="post-category" target="_blank">
-                            编程
+                        <a href="/categories/Linux/" class="post-category" target="_blank">
+                            Linux
                         </a>
                         
                     </div>
@@ -441,7 +443,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-02-20
+                    2019-12-05
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -455,14 +457,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    809
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
                 
@@ -478,95 +480,80 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Argparse简介"><a href="#Argparse简介" class="headerlink" title="Argparse简介"></a>Argparse简介</h2><p>argparse是python自带的一个命令行解析包，非常适合编写可读性好的命令行程序。<br>要使用的话，直接导入即可，无需另外安装。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>新建一个 <code>parse.py</code>文件如下：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># !/usr/bin/python</span>
-<span class="token comment" spellcheck="true"># -*- coding: UTF-8 -*-</span>
+                <h1 id="Git钩子实现自动部署"><a href="#Git钩子实现自动部署" class="headerlink" title="Git钩子实现自动部署"></a>Git钩子实现自动部署</h1><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>本地仓库：平时开发所在的环境，可以简单的理解为自己的电脑，记为<strong>L1</strong></p>
+</li>
+<li><p>远程git服务器：<code>git</code>服务所在的服务器，比如我们自己内部搭建的<code>gitlab</code>服务运行在31服务器上，记为<strong>G1</strong> </p>
+</li>
+<li><p>远程仓库： 运行仓库代码运行所在的服务器，比如我们的<code>webserver</code>运行的服务器，记为<strong>R1</strong>  </p>
+</li>
+</ul>
+<p>在这里，我们的<strong>G1</strong>和<strong>R1</strong>恰好是同一台机器</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>假设<strong>G1</strong>上已经有存在的仓库<code>webserver</code>，并且在<strong>L1</strong>和<strong>R1</strong>上都已经有通过<code>git clone</code>命令下载过来的版本一致的代码。并且<strong>R1</strong>上运行<code>&#39;webserver</code>的用户为<code>user1</code>  </p>
+<h4 id="ssh免密登录"><a href="#ssh免密登录" class="headerlink" title="ssh免密登录"></a>ssh免密登录</h4><p>首先要实现运行<code>git</code>服务的用户(<strong>用户git</strong>）和<code>user1</code>的<code>ssh</code> 免密登录。即<code>git</code>可以通过</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>直接登录<code>user1</code>  </p>
+<p>在<code>git</code>用户下，运行命令</p>
+<pre class="line-numbers language-bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>会在<code>git</code>的 <code>home</code>目录下生成私钥和公钥文件：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">~/.ssh/id_rsa  <span class="token comment" spellcheck="true">#私钥</span>
+~/.ssh/id_rsa.pub  <span class="token comment" spellcheck="true">#公钥</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>如果home目录下已经存在密钥文件，则不需要重新生成。否则以前生成的密钥会失效！</strong></p>
+<p>将<code>git</code>用户的公钥添加到<code>user1</code>的<code>~/.ssh/authorized_keys</code>中，即</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> ~/.ssh/id_rsa.pub <span class="token operator">>></span> /home/user1/.ssh/authorized_keys <span class="token comment" spellcheck="true">#权限问题，这个命令不会成功，自己实现相同的结果即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后在<code>user1</code>下修改<code>authorized_keys</code>的权限：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chmod</span> 600 ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>再回到<code>git</code>用户下，执行：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>不用输入密码，即可直接登录<code>user1</code>用户</p>
+<h4 id="拉取更新脚本"><a href="#拉取更新脚本" class="headerlink" title="拉取更新脚本"></a>拉取更新脚本</h4><p>在<code>user1</code>用户下，新建一个脚本，实现从仓库拉取更新的功能，示例如下：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
 
-<span class="token keyword">import</span> argparse
+DeployPath<span class="token operator">=</span><span class="token string">"/mnt/analysis/tests/test_uesr1/tmp/webserver"</span>  <span class="token comment" spellcheck="true">#远程仓库路径</span>
+<span class="token function">cd</span> <span class="token variable">$DeployPath</span>
 
-<span class="token comment" spellcheck="true"># get parameters</span>
-<span class="token keyword">def</span> <span class="token function">parse_args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+IS_BARE<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> rev-parse --is-bare-repository<span class="token variable">)</span></span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$IS_BARE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+<span class="token keyword">echo</span> <span class="token operator">></span><span class="token operator">&amp;</span>2 <span class="token string">"fatal: post-receive: IS_NOT_BARE"</span>
+<span class="token keyword">exit</span> 1
+<span class="token keyword">fi</span>
 
-    description <span class="token operator">=</span> u<span class="token string">"扫描给定项目路径，生成路径下数据信息"</span>
+unset GIT_DIR
 
-    parse <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span>description<span class="token punctuation">)</span>
+<span class="token keyword">echo</span> <span class="token string">"=========================="</span>
+<span class="token keyword">echo</span> <span class="token string">"deploying the webserver"</span>
 
-    help <span class="token operator">=</span> u<span class="token string">"输出文件名称"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+<span class="token function">git</span> fetch --all  <span class="token comment" spellcheck="true">#使用fetch，不会自动merge</span>
+<span class="token function">git</span> reset --hard origin/master <span class="token comment" spellcheck="true">#强制和远程仓库保持一致</span>
 
-    help <span class="token operator">=</span> u<span class="token string">"已记录好的总表，如不存在可用'-'代替"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'backup'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+time<span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span><span class="token variable">`</span></span>
+<span class="token keyword">echo</span> <span class="token string">"webserver fetch at time: <span class="token variable">$time</span>."</span>
+<span class="token keyword">echo</span> <span class="token string">"=========================="</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以将此脚本放在<code>&#39;home</code>目录下，命名为<code>git_fetch.sh</code></p>
+<h3 id="钩子的实现"><a href="#钩子的实现" class="headerlink" title="钩子的实现"></a>钩子的实现</h3><p><code>git</code>服务在服务器上会有相应的目录，在该目录下会有所有用户的所有仓库信息。因为我们要实现的是服务端钩子，所以需要在<code>git</code>服务的服务器上设置。</p>
+<p>在我们的<strong>G1</strong>上运行的是<code>gitlab</code>服务，路径为：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"> /var/opt/gitlab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>注意</strong>：<code>git</code>用户的<code>home</code>目录也在该路径下</p>
+<p>在该路径下的<code>git-data/repositories</code>目录保存的就是仓库信息。进入我们需要设置钩子的仓库，比如:</p>
+<pre class="line-numbers language-bahs"><code class="language-bahs">/var/opt/gitlab/git-data/repositories/user1/webserver.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在这个目录下，有一个<code>hooks</code>目录，这是一个软连接，里面是全局钩子。这里的钩子修改，所有的仓库都会执行。<br>因为我们只想设置单独的仓库，所以我们需要在当前仓库新建一个<code>custom_hooks</code>的目录，这个名称是写死的，不能用其他名称。<br>在<code>custom_hooks</code>下新建<code>post-receive</code>文件，名称同样是定死的。这个名称的钩子代表<code>push</code>之后执行的动作：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> custom_hooks <span class="token comment" spellcheck="true">#/var/opt/gitlab/git-data/repositories/user1/webserver.git/custom_hooks</span>
 
-    help <span class="token operator">=</span> u<span class="token string">"需要扫描的项目目录,可输入多个"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'filepath'</span><span class="token punctuation">,</span> nargs<span class="token operator">=</span><span class="token string">'*'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
+<span class="token function">cd</span> custom_hooks
+vim post-receive <span class="token comment" spellcheck="true"># 注意是横扛，不是下划线</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在<code>post-receive</code>里写以下命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
 
-    help <span class="token operator">=</span> u<span class="token string">"项目名称"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-p'</span><span class="token punctuation">,</span><span class="token string">'--project'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"数据类型, 默认值为: FASTQ"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-t'</span><span class="token punctuation">,</span><span class="token string">'--type'</span><span class="token punctuation">,</span>default<span class="token operator">=</span><span class="token string">'FASTQ'</span> <span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"测序平台, 默认值为: Illumina"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'--cexu'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'Illumina'</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    help <span class="token operator">=</span> u<span class="token string">"文库大小, 数据类型:int(整数型)"</span>
-    parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-l'</span><span class="token punctuation">,</span> <span class="token string">'--library'</span><span class="token punctuation">,</span>  type<span class="token operator">=</span>int<span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-
-    args <span class="token operator">=</span> parse<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> args
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-
-    args <span class="token operator">=</span> parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    output <span class="token operator">=</span> args<span class="token punctuation">.</span>output
-    backup <span class="token operator">=</span> args<span class="token punctuation">.</span>backup
-    filepath <span class="token operator">=</span> args<span class="token punctuation">.</span>filepath
-    project <span class="token operator">=</span> args<span class="token punctuation">.</span>project
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>运行 <code>python parse.py -h</code> </p>
-<pre class="line-numbers language-bash"><code class="language-bash">usage: scanData.py <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PROJECT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-c CEXU<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LIBRARY<span class="token punctuation">]</span>
-                   output backup <span class="token punctuation">[</span>filepath <span class="token punctuation">[</span>filepath <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
-
-扫描给定项目路径，生成路径下数据信息
-
-positional arguments:
-  output                输出文件名称
-  backup                已记录好的总表，如不存在可用<span class="token string">'-'</span>代替
-  filepath              需要扫描的项目目录,可输入多个
-
-optional arguments:
-  -h, --help            show this <span class="token function">help</span> message and <span class="token keyword">exit</span>
-  -p PROJECT, --project PROJECT
-                        项目名称
-  -t TYPE, --type TYPE  数据类型, 默认值为: FASTQ
-  -c CEXU, --cexu CEXU  测序平台, 默认值为: Illumina
-  -l LIBRARY, --library LIBRARY
-                        文库大小, 数据类型:int<span class="token punctuation">(</span>整数型<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到帮助信息是由argparse包自动生成的。且帮助信息是可以自己定义的。</p>
-<h2 id="定位参数"><a href="#定位参数" class="headerlink" title="定位参数"></a>定位参数</h2><p>在上述程序中，<code>output</code>, <code>backup</code>, <code>filpath</code>这3个参数在帮助信息中是<code>positional arguments</code>，中文意思就是<code>定位参数</code>，用法是不用带<code>-</code>就能使用。顾名思义，这些参数的位置是固定的，前后顺序是无法更换的，且这些参数是必选的，不全的话就会报错。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">python scanData.py test.txt
-usage: scanData.py <span class="token punctuation">[</span>-h<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p PROJECT<span class="token punctuation">]</span> <span class="token punctuation">[</span>-t TYPE<span class="token punctuation">]</span> <span class="token punctuation">[</span>-c CEXU<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l LIBRARY<span class="token punctuation">]</span>
-                   output backup <span class="token punctuation">[</span>filepath <span class="token punctuation">[</span>filepath <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
-scanData.py: error: too few arguments<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><p>上述程序中的其他参数，在帮助信息中显示是<code>optional arguments</code>， 意思是可选参数。可以使用<code>-</code>来指定短参数，也可以使用<code>--</code>来表示长参数。可选参数是<code>非必选</code>的，可用可不用。而且顺序是可以随意更换的。</p>
-<h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p>在<code>argparse</code>中可以对参数的<code>数据类型、默认值、可选值、帮助信息</code>等进行设置。</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># !/usr/bin/python</span>
-<span class="token comment" spellcheck="true"># -*- coding: UTF-8 -*-</span>
-
-<span class="token keyword">import</span> argparse
-
-parse <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-help <span class="token operator">=</span> u<span class="token string">"文库大小, 数据类型:int(整数型)"</span>
-parse<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-l'</span><span class="token punctuation">,</span> <span class="token string">'--library'</span><span class="token punctuation">,</span>  type<span class="token operator">=</span>int<span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">150</span><span class="token punctuation">,</span> choice<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">150</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">,</span> help<span class="token operator">=</span>help<span class="token punctuation">)</span>
-args <span class="token operator">=</span> parse<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在<code>add_argument</code>方法中，<code>type</code>指定数据类型，<code>default</code>指定默认值，<code>choice</code>指定可选值， <code>help</code>指定自定义帮助信息。<code>nargs</code>可以指定参数的数量，值可以为正整数，也可以为<code>*</code>表示<code>任意个数，可以为0个</code>， 还可以为<code>+</code>，代表<code>1或1以上的个数</code>。</p>
-<p>在上述的<code>parse.py</code>中，<code>filepath</code>这个参数的个数就是不固定的，可以传入多个参数。参数解析之后，得到的是一个数组。</p>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener">Argparse文档</a></p>
+<span class="token function">ssh</span> user1@xxx.xxx.xxx.xxx  <span class="token string">"sh ~/git_fetch.sh"</span>  <span class="token comment" spellcheck="true">#即登录user1，然后user1执行拉取更新的脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>以上新建文件夹和文件的步骤如果是用<code>root</code>或者其他<strong>非git</strong>用户操作的，操作完后需要把所有者改成<code>git</code>：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chown</span> -R git:git custom_hooks
+<span class="token function">chmod</span> -R 777 custom_hokks  <span class="token comment" spellcheck="true"># 755应该也可以</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>到此钩子的设置就完成了。接下来在本地<strong>L1</strong>修改完代码<code>push</code>到远程仓库后，<strong>R1</strong>上的代码也会自动从远程仓库拉取更新。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>工作流程其实很简单，主要是要分清各个角色执行的功能。</p>
+<ol>
+<li><strong>L1</strong>修改代码，然后push给远程仓库，即<strong>G1</strong></li>
+<li><strong>G1</strong>上的仓库有<code>post-receive</code>钩子，但是执行用户是<code>git</code>。<code>git</code>用户无权限对<code>user1</code>的仓库进行操作，所以通过<code>ssh</code>的方式登录到<code>user1</code>执行拉取更新的操作</li>
+</ol>
 
             </div>
             <hr />
@@ -725,9 +712,9 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《argparse包使用》
+                    《Git钩子实现自动部署》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/02/20/argparse包使用/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/12/05/Git钩子实现自动部署/" property="cc:attributionName"
                rel="cc:attributionURL">
                 YTer
             </a> 采用
@@ -768,7 +755,7 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
         repo: 'chenxj1101.github.io',
         owner: 'chenxj1101',
         admin: "chenxj1101",
-        id: '2018/02/20/argparse包使用/',
+        id: '2019/12/05/Git钩子实现自动部署/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -789,92 +776,36 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/02/23/PureCN测试/">
+                <a href="/2019/12/05/Git钩子实现自动部署/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="PureCN测试">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Git钩子实现自动部署">
                         
-                        <span class="card-title">PureCN测试</span>
+                        <span class="card-title">Git钩子实现自动部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PureCN计算肿瘤细胞纯度
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-23
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/生信/" class="post-category" target="_blank">
-                                    生信
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/tumor/" target="_blank">
-                        <span class="chip bg-color">tumor</span>
-                    </a>
-                    
-                    <a href="/tags/bioinformatics/" target="_blank">
-                        <span class="chip bg-color">bioinformatics</span>
-                    </a>
-                    
-                    <a href="/tags/R语言/" target="_blank">
-                        <span class="chip bg-color">R语言</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/02/20/argparse包使用/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="argparse包使用">
-                        
-                        <span class="card-title">argparse包使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            经常需要使用argparse这个包来写命令行，所以对用法做个记录，以免忘记
+                            Git实现自动部署
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/编程/" class="post-category" target="_blank">
-                                    编程
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
                                 </a>
                             
                             
@@ -885,16 +816,73 @@ args <span class="token operator">=</span> parse<span class="token punctuation">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/" target="_blank">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/tags/hook/" target="_blank">
+                        <span class="chip bg-color">hook</span>
                     </a>
                     
-                    <a href="/tags/argparse/" target="_blank">
-                        <span class="chip bg-color">argparse</span>
+                    <a href="/tags/linux/" target="_blank">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
-                    <a href="/tags/CLI/" target="_blank">
-                        <span class="chip bg-color">CLI</span>
+                    <a href="/tags/Git/" target="_blank">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/11/07/决策树/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="决策树">
+                        
+                        <span class="card-title">决策树</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            决策树算法笔记
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                    机器学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CART/" target="_blank">
+                        <span class="chip bg-color">CART</span>
+                    </a>
+                    
+                    <a href="/tags/机器学习/" target="_blank">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/决策树/" target="_blank">
+                        <span class="chip bg-color">决策树</span>
                     </a>
                     
                 </div>

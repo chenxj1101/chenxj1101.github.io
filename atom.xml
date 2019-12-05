@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yantinger.com/"/>
-  <updated>2019-11-07T08:41:48.227Z</updated>
+  <updated>2019-12-05T03:06:41.597Z</updated>
   <id>https://yantinger.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git钩子实现自动部署</title>
+    <link href="https://yantinger.com/2019/12/05/Git%E9%92%A9%E5%AD%90%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
+    <id>https://yantinger.com/2019/12/05/Git钩子实现自动部署/</id>
+    <published>2019-12-05T03:05:07.000Z</published>
+    <updated>2019-12-05T03:06:41.597Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Git钩子实现自动部署&quot;&gt;&lt;a href=&quot;#Git钩子实现自动部署&quot; class=&quot;headerlink&quot; title=&quot;Git钩子实现自动部署&quot;&gt;&lt;/a&gt;Git钩子实现自动部署&lt;/h1&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://yantinger.com/categories/Linux/"/>
+    
+    
+      <category term="hook" scheme="https://yantinger.com/tags/hook/"/>
+    
+      <category term="linux" scheme="https://yantinger.com/tags/linux/"/>
+    
+      <category term="Git" scheme="https://yantinger.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>决策树</title>
@@ -102,9 +132,9 @@
       <category term="Linux" scheme="https://yantinger.com/categories/Linux/"/>
     
     
-      <category term="ftp" scheme="https://yantinger.com/tags/ftp/"/>
-    
       <category term="linux" scheme="https://yantinger.com/tags/linux/"/>
+    
+      <category term="ftp" scheme="https://yantinger.com/tags/ftp/"/>
     
       <category term="vsftpd" scheme="https://yantinger.com/tags/vsftpd/"/>
     
